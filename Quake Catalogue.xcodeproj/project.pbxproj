@@ -13,6 +13,7 @@
 		0137D0DC1C002F5D00798A3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0137D0DA1C002F5D00798A3F /* LaunchScreen.storyboard */; };
 		0137D0E71C002F5D00798A3F /* Quake_CatalogueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D0E61C002F5D00798A3F /* Quake_CatalogueTests.swift */; };
 		0137D0F21C002F5D00798A3F /* Quake_CatalogueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D0F11C002F5D00798A3F /* Quake_CatalogueUITests.swift */; };
+		0137D1001C00A84700798A3F /* LatestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D0FF1C00A84700798A3F /* LatestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		0137D0ED1C002F5D00798A3F /* Quake CatalogueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Quake CatalogueUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0137D0F11C002F5D00798A3F /* Quake_CatalogueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quake_CatalogueUITests.swift; sourceTree = "<group>"; };
 		0137D0F31C002F5D00798A3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0137D0FF1C00A84700798A3F /* LatestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				0137D0D81C002F5C00798A3F /* Assets.xcassets */,
 				0137D0DA1C002F5D00798A3F /* LaunchScreen.storyboard */,
 				0137D0DD1C002F5D00798A3F /* Info.plist */,
+				0137D0FF1C00A84700798A3F /* LatestViewController.swift */,
 			);
 			path = "Quake Catalogue";
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0137D0D01C002F5C00798A3F /* AppDelegate.swift in Sources */,
+				0137D1001C00A84700798A3F /* LatestViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +485,7 @@
 				0137D0F81C002F5D00798A3F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0137D0F91C002F5D00798A3F /* Build configuration list for PBXNativeTarget "Quake CatalogueTests" */ = {
 			isa = XCConfigurationList;
@@ -489,6 +494,7 @@
 				0137D0FB1C002F5D00798A3F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0137D0FC1C002F5D00798A3F /* Build configuration list for PBXNativeTarget "Quake CatalogueUITests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +503,7 @@
 				0137D0FE1C002F5D00798A3F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
