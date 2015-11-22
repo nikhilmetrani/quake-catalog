@@ -9,32 +9,76 @@
 import UIKit
 import MapKit
 
-class LatestViewController: UIViewController, MKMapViewDelegate {
+class LatestViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
 
     @IBOutlet weak var mapViewLatestQuake: MKMapView!
     @IBOutlet weak var stepperMapView: UIStepper!
     var mapRegionDelta: Double = 2
     var mapStepperValue: Double = 2
+    var mapStepperIsVertical: Bool = false
+    
+    let quakeQueryURLAsString: String = "http://earthquake.usgs.gov/fdsnws/event/1/query"
+    
+    var urlQuery: QCURLQuery?
+    
+    var quakeCoordinateAndSpan: (quakeCoordinates: CLLocationCoordinate2D, spanArea: MKCoordinateSpan)?
+    
+    var quakesToday: QCQuakeQueryResult?
+    
+    var latestQuake: QCQuakeFeature?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        prepareUrlQueryForToday()
         mapViewLatestQuake.delegate = self
+        
+        fireQueryForTodaysQuakes()
+        
     }
     
     override func viewDidAppear(animated: Bool) {
-        //let latitudeDelta: CLLocationDegrees = 1
-        //let longitudeDelta: CLLocationDegrees = 1 //0.005
-        //let spanArea: MKCoordinateSpan = MKCoordinateSpanMake(latitudeDelta, longitudeDelta)
-        //let quakeCoordinates: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 5.8591, longitude: 126.1841)
-        let (quakeCoordinates, spanArea) = prepareMapViewInfoData(1, latitude: 5.8591, longitude: 126.1841)
-        setMapViewInfo(quakeCoordinates, span: spanArea)
-        addAnnotationToMapView(quakeCoordinates, title: "M 4.5 - 55km S of Pondaguitan, Philippines")
-        stepperMapView.transform=CGAffineTransformRotate(stepperMapView.transform, CGFloat(270.0/180*M_PI));
+        if !mapStepperIsVertical {
+            stepperMapView.transform=CGAffineTransformRotate(stepperMapView.transform, CGFloat(270.0/180*M_PI));
+            mapStepperIsVertical = true
+        }
+        if let latestQuake = self.quakesToday?.features[0] {
+            self.latestQuake = latestQuake
+            if let latestCoordinates = latestQuake.geometry {
+                self.quakeCoordinateAndSpan = self.prepareMapViewInfoData(self.mapRegionDelta, latitude: (latestCoordinates.latitude)!, longitude: (latestCoordinates.longitude)!)
+                self.setMapViewInfo(self.quakeCoordinateAndSpan!.quakeCoordinates, span: self.quakeCoordinateAndSpan!.spanArea)
+                self.addAnnotationToMapView(self.quakeCoordinateAndSpan!.quakeCoordinates, title: (latestQuake.title)!)
+            }
+        }
+    }
+    
+    func fireQueryForTodaysQuakes() {
+        
+        let quakeSearchResultHandler: (NSData?, NSURLResponse?, NSError?) -> () = { (data: NSData?,response: NSURLResponse?,  error: NSError?) -> Void in
+            do {
+                let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                print("AsSynchronous\(jsonResult)")
+                self.quakesToday = QCQuakeQueryResult(json: jsonResult)
+                if let latestQuake = self.quakesToday?.features[0] {
+                    self.latestQuake = latestQuake
+                    if let latestCoordinates = latestQuake.geometry {
+                        self.quakeCoordinateAndSpan = self.prepareMapViewInfoData(self.mapRegionDelta, latitude: (latestCoordinates.latitude)!, longitude: (latestCoordinates.longitude)!)
+                        self.setMapViewInfo(self.quakeCoordinateAndSpan!.quakeCoordinates, span: self.quakeCoordinateAndSpan!.spanArea)
+                        self.addAnnotationToMapView(self.quakeCoordinateAndSpan!.quakeCoordinates, title: (latestQuake.title)!)
+                    }
+                }
+            } catch {
+                
+            }
+        }
+        
+        let url: NSURL = NSURL(string: (urlQuery?.URLWithQueries)!)!
+        
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: quakeSearchResultHandler)
+        task.resume()
     }
     
     func prepareMapViewInfoData(deltaInDegrees: Double, latitude: Double, longitude: Double)->(CLLocationCoordinate2D, MKCoordinateSpan) {
-        //let latitudeDelta: CLLocationDegrees = deltaInDegrees
-        //let longitudeDelta: CLLocationDegrees = deltaInDegrees //0.005
         let spanArea: MKCoordinateSpan = MKCoordinateSpanMake(deltaInDegrees, deltaInDegrees)
         let quakeCoordinates: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         return (quakeCoordinates, spanArea)
@@ -54,9 +98,12 @@ class LatestViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func mapZoomLevelChanged(sender: UIStepper) {
         mapRegionDelta = getMapRegionDeltaFromSlider(sender.value)
-        print("new delta: \(mapRegionDelta)")
-        let (quakeCoordinates, spanArea) = prepareMapViewInfoData(mapRegionDelta, latitude: 5.8591, longitude: 126.1841)
-        setMapViewInfo(quakeCoordinates, span: spanArea)
+        if latestQuake != nil {
+            if let latestCoordinates = latestQuake!.geometry {
+                self.quakeCoordinateAndSpan = self.prepareMapViewInfoData(self.mapRegionDelta, latitude: (latestCoordinates.latitude)!, longitude: (latestCoordinates.longitude)!)
+                self.setMapViewInfo(self.quakeCoordinateAndSpan!.quakeCoordinates, span: self.quakeCoordinateAndSpan!.spanArea)
+            }
+        }
         mapStepperValue = sender.value
     }
     
@@ -64,6 +111,16 @@ class LatestViewController: UIViewController, MKMapViewDelegate {
         let step = value - mapStepperValue
         print("Step: \(step)")
         return mapRegionDelta - step
+    }
+    
+    func prepareUrlQueryForToday() {
+        urlQuery = QCURLQuery(sourceURL: quakeQueryURLAsString)
+        let dateTimeComponents: QCDateTimeConponents = QCDateTimeConponents()
+        urlQuery?.addQuery(parameterName: "starttime", parameterValue: dateTimeComponents.todayStart)
+        urlQuery?.addQuery(parameterName: "endtime", parameterValue: dateTimeComponents.todayEnd)
+        urlQuery?.addQuery(parameterName: "orderby", parameterValue: "time")
+        urlQuery?.addQuery(parameterName: "format", parameterValue: "geojson")
+        urlQuery?.addQuery(parameterName: "minmagnitude", parameterValue: "4")
     }
     
     @IBAction func shareTapped(sender: UIButton) {

@@ -14,6 +14,12 @@
 		0137D0E71C002F5D00798A3F /* Quake_CatalogueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D0E61C002F5D00798A3F /* Quake_CatalogueTests.swift */; };
 		0137D0F21C002F5D00798A3F /* Quake_CatalogueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D0F11C002F5D00798A3F /* Quake_CatalogueUITests.swift */; };
 		0137D1001C00A84700798A3F /* LatestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D0FF1C00A84700798A3F /* LatestViewController.swift */; };
+		0137D1021C014D2A00798A3F /* QCURLQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D1011C014D2A00798A3F /* QCURLQuery.swift */; };
+		0137D1041C01585100798A3F /* QCDateTimeComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D1031C01585100798A3F /* QCDateTimeComponents.swift */; };
+		0137D1081C0162B300798A3F /* QCQuakeQueryResultMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D1071C0162B300798A3F /* QCQuakeQueryResultMetadata.swift */; };
+		0137D10A1C01645E00798A3F /* QCQuakeQueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D1091C01645E00798A3F /* QCQuakeQueryResult.swift */; };
+		0137D10C1C0167F500798A3F /* QCQuakePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D10B1C0167F500798A3F /* QCQuakePoint.swift */; };
+		0137D10E1C016A4900798A3F /* QCQuakeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D10D1C016A4900798A3F /* QCQuakeFeature.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +53,12 @@
 		0137D0F11C002F5D00798A3F /* Quake_CatalogueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quake_CatalogueUITests.swift; sourceTree = "<group>"; };
 		0137D0F31C002F5D00798A3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0137D0FF1C00A84700798A3F /* LatestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestViewController.swift; sourceTree = "<group>"; };
+		0137D1011C014D2A00798A3F /* QCURLQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCURLQuery.swift; sourceTree = "<group>"; };
+		0137D1031C01585100798A3F /* QCDateTimeComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCDateTimeComponents.swift; sourceTree = "<group>"; };
+		0137D1071C0162B300798A3F /* QCQuakeQueryResultMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCQuakeQueryResultMetadata.swift; sourceTree = "<group>"; };
+		0137D1091C01645E00798A3F /* QCQuakeQueryResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCQuakeQueryResult.swift; sourceTree = "<group>"; };
+		0137D10B1C0167F500798A3F /* QCQuakePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCQuakePoint.swift; sourceTree = "<group>"; };
+		0137D10D1C016A4900798A3F /* QCQuakeFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCQuakeFeature.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +115,12 @@
 				0137D0DA1C002F5D00798A3F /* LaunchScreen.storyboard */,
 				0137D0DD1C002F5D00798A3F /* Info.plist */,
 				0137D0FF1C00A84700798A3F /* LatestViewController.swift */,
+				0137D1011C014D2A00798A3F /* QCURLQuery.swift */,
+				0137D1031C01585100798A3F /* QCDateTimeComponents.swift */,
+				0137D1071C0162B300798A3F /* QCQuakeQueryResultMetadata.swift */,
+				0137D1091C01645E00798A3F /* QCQuakeQueryResult.swift */,
+				0137D10B1C0167F500798A3F /* QCQuakePoint.swift */,
+				0137D10D1C016A4900798A3F /* QCQuakeFeature.swift */,
 			);
 			path = "Quake Catalogue";
 			sourceTree = "<group>";
@@ -259,8 +277,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0137D1041C01585100798A3F /* QCDateTimeComponents.swift in Sources */,
+				0137D1021C014D2A00798A3F /* QCURLQuery.swift in Sources */,
 				0137D0D01C002F5C00798A3F /* AppDelegate.swift in Sources */,
+				0137D1081C0162B300798A3F /* QCQuakeQueryResultMetadata.swift in Sources */,
+				0137D10C1C0167F500798A3F /* QCQuakePoint.swift in Sources */,
 				0137D1001C00A84700798A3F /* LatestViewController.swift in Sources */,
+				0137D10E1C016A4900798A3F /* QCQuakeFeature.swift in Sources */,
+				0137D10A1C01645E00798A3F /* QCQuakeQueryResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
