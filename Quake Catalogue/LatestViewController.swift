@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class LatestViewController: UIViewController, MKMapViewDelegate, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
+class LatestViewController: UIViewController, MKMapViewDelegate, QCURLQueryDelegate {
 
     @IBOutlet weak var mapViewLatestQuake: MKMapView!
     @IBOutlet weak var stepperMapView: UIStepper!
@@ -33,7 +33,8 @@ class LatestViewController: UIViewController, MKMapViewDelegate, NSURLConnection
         prepareUrlQueryForToday()
         mapViewLatestQuake.delegate = self
         
-        fireQueryForTodaysQuakes()
+        self.urlQuery?.execute()
+        //fireQueryForTodaysQuakes()
         
     }
     
@@ -52,30 +53,16 @@ class LatestViewController: UIViewController, MKMapViewDelegate, NSURLConnection
         }
     }
     
-    func fireQueryForTodaysQuakes() {
-        
-        let quakeSearchResultHandler: (NSData?, NSURLResponse?, NSError?) -> () = { (data: NSData?,response: NSURLResponse?,  error: NSError?) -> Void in
-            do {
-                let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                print("AsSynchronous\(jsonResult)")
-                self.quakesToday = QCQuakeQueryResult(json: jsonResult)
-                if let latestQuake = self.quakesToday?.features[0] {
-                    self.latestQuake = latestQuake
-                    if let latestCoordinates = latestQuake.geometry {
-                        self.quakeCoordinateAndSpan = self.prepareMapViewInfoData(self.mapRegionDelta, latitude: (latestCoordinates.latitude)!, longitude: (latestCoordinates.longitude)!)
-                        self.setMapViewInfo(self.quakeCoordinateAndSpan!.quakeCoordinates, span: self.quakeCoordinateAndSpan!.spanArea)
-                        self.addAnnotationToMapView(self.quakeCoordinateAndSpan!.quakeCoordinates, title: (latestQuake.title)!)
-                    }
-                }
-            } catch {
-                
+    func didReturnSearchResults(quakeSearchResult: QCQuakeQueryResult) {
+        self.quakesToday = quakeSearchResult
+        if let latestQuake = self.quakesToday?.features[0] {
+            self.latestQuake = latestQuake
+            if let latestCoordinates = latestQuake.geometry {
+                self.quakeCoordinateAndSpan = self.prepareMapViewInfoData(self.mapRegionDelta, latitude: (latestCoordinates.latitude)!, longitude: (latestCoordinates.longitude)!)
+                self.setMapViewInfo(self.quakeCoordinateAndSpan!.quakeCoordinates, span: self.quakeCoordinateAndSpan!.spanArea)
+                self.addAnnotationToMapView(self.quakeCoordinateAndSpan!.quakeCoordinates, title: (latestQuake.title)!)
             }
         }
-        
-        let url: NSURL = NSURL(string: (urlQuery?.URLWithQueries)!)!
-        
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: quakeSearchResultHandler)
-        task.resume()
     }
     
     func prepareMapViewInfoData(deltaInDegrees: Double, latitude: Double, longitude: Double)->(CLLocationCoordinate2D, MKCoordinateSpan) {
@@ -115,6 +102,7 @@ class LatestViewController: UIViewController, MKMapViewDelegate, NSURLConnection
     
     func prepareUrlQueryForToday() {
         urlQuery = QCURLQuery(sourceURL: quakeQueryURLAsString)
+        urlQuery?.delegate = self
         let dateTimeComponents: QCDateTimeConponents = QCDateTimeConponents()
         urlQuery?.addQuery(parameterName: "starttime", parameterValue: dateTimeComponents.todayStart)
         urlQuery?.addQuery(parameterName: "endtime", parameterValue: dateTimeComponents.todayEnd)

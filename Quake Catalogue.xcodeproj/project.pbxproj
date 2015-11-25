@@ -20,6 +20,8 @@
 		0137D10A1C01645E00798A3F /* QCQuakeQueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D1091C01645E00798A3F /* QCQuakeQueryResult.swift */; };
 		0137D10C1C0167F500798A3F /* QCQuakePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D10B1C0167F500798A3F /* QCQuakePoint.swift */; };
 		0137D10E1C016A4900798A3F /* QCQuakeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D10D1C016A4900798A3F /* QCQuakeFeature.swift */; };
+		0137D1101C01F05300798A3F /* SearchMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D10F1C01F05300798A3F /* SearchMasterViewController.swift */; };
+		0137D1121C01F0E500798A3F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D1111C01F0E500798A3F /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		0137D1091C01645E00798A3F /* QCQuakeQueryResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCQuakeQueryResult.swift; sourceTree = "<group>"; };
 		0137D10B1C0167F500798A3F /* QCQuakePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCQuakePoint.swift; sourceTree = "<group>"; };
 		0137D10D1C016A4900798A3F /* QCQuakeFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCQuakeFeature.swift; sourceTree = "<group>"; };
+		0137D10F1C01F05300798A3F /* SearchMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMasterViewController.swift; sourceTree = "<group>"; };
+		0137D1111C01F0E500798A3F /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,8 @@
 				0137D1091C01645E00798A3F /* QCQuakeQueryResult.swift */,
 				0137D10B1C0167F500798A3F /* QCQuakePoint.swift */,
 				0137D10D1C016A4900798A3F /* QCQuakeFeature.swift */,
+				0137D10F1C01F05300798A3F /* SearchMasterViewController.swift */,
+				0137D1111C01F0E500798A3F /* TabBarViewController.swift */,
 			);
 			path = "Quake Catalogue";
 			sourceTree = "<group>";
@@ -277,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0137D1101C01F05300798A3F /* SearchMasterViewController.swift in Sources */,
 				0137D1041C01585100798A3F /* QCDateTimeComponents.swift in Sources */,
 				0137D1021C014D2A00798A3F /* QCURLQuery.swift in Sources */,
 				0137D0D01C002F5C00798A3F /* AppDelegate.swift in Sources */,
@@ -284,6 +291,7 @@
 				0137D10C1C0167F500798A3F /* QCQuakePoint.swift in Sources */,
 				0137D1001C00A84700798A3F /* LatestViewController.swift in Sources */,
 				0137D10E1C016A4900798A3F /* QCQuakeFeature.swift in Sources */,
+				0137D1121C01F0E500798A3F /* TabBarViewController.swift in Sources */,
 				0137D10A1C01645E00798A3F /* QCQuakeQueryResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,10 +8,15 @@
 
 import Foundation
 
+protocol QCURLQueryDelegate {
+    func didReturnSearchResults(quakeSearchResult: QCQuakeQueryResult)
+}
+
 class QCURLQuery {
     
     private var URL: String = ""
     var queries: [String] = []
+    var delegate: QCURLQueryDelegate?
     
     var URLWithQueries: String {
         get {
@@ -38,5 +43,27 @@ class QCURLQuery {
             returnQuery = returnQuery == "" ? "\(query)" : "\(returnQuery)&\(query)"
         }
         return returnQuery
+    }
+    
+    func execute() {
+        
+        let quakeSearchResultHandler: (NSData?, NSURLResponse?, NSError?) -> () = { (data: NSData?,response: NSURLResponse?,  error: NSError?) -> Void in
+            do {
+                let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                print("AsSynchronous\(jsonResult)")
+                let quakesToday = QCQuakeQueryResult(json: jsonResult)
+                if let delegateObj: QCURLQueryDelegate = self.delegate {
+                    delegateObj.didReturnSearchResults(quakesToday)
+                }
+                
+            } catch {
+                
+            }
+        }
+        
+        let url: NSURL = NSURL(string: (URLWithQueries))!
+        
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: quakeSearchResultHandler)
+        task.resume()
     }
 }
