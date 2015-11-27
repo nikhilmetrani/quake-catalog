@@ -22,6 +22,7 @@
 		0137D10E1C016A4900798A3F /* QCQuakeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D10D1C016A4900798A3F /* QCQuakeFeature.swift */; };
 		0137D1101C01F05300798A3F /* SearchMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D10F1C01F05300798A3F /* SearchMasterViewController.swift */; };
 		0137D1121C01F0E500798A3F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D1111C01F0E500798A3F /* TabBarViewController.swift */; };
+		0137D1161C074D7C00798A3F /* QuakeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D1151C074D7C00798A3F /* QuakeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		0137D10D1C016A4900798A3F /* QCQuakeFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCQuakeFeature.swift; sourceTree = "<group>"; };
 		0137D10F1C01F05300798A3F /* SearchMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMasterViewController.swift; sourceTree = "<group>"; };
 		0137D1111C01F0E500798A3F /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		0137D1151C074D7C00798A3F /* QuakeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuakeTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				0137D10D1C016A4900798A3F /* QCQuakeFeature.swift */,
 				0137D10F1C01F05300798A3F /* SearchMasterViewController.swift */,
 				0137D1111C01F0E500798A3F /* TabBarViewController.swift */,
+				0137D1151C074D7C00798A3F /* QuakeTableViewCell.swift */,
 			);
 			path = "Quake Catalogue";
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0137D1161C074D7C00798A3F /* QuakeTableViewCell.swift in Sources */,
 				0137D1101C01F05300798A3F /* SearchMasterViewController.swift in Sources */,
 				0137D1041C01585100798A3F /* QCDateTimeComponents.swift in Sources */,
 				0137D1021C014D2A00798A3F /* QCURLQuery.swift in Sources */,

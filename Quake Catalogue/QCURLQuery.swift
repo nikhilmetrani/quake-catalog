@@ -14,23 +14,30 @@ protocol QCURLQueryDelegate {
 
 class QCURLQuery {
     
-    private var URL: String = ""
+    var URL: String?
     var queries: [String] = []
     var delegate: QCURLQueryDelegate?
+    var searchResult: QCQuakeQueryResult?
     
     var URLWithQueries: String {
         get {
-            return "\(URL)?\(concatnateURLQueriesAsString())"
+            return "\(URL!)?\(concatnateURLQueriesAsString())"
         }
     }
     
-    init(sourceURL urlAsString: String) {
-        URL = urlAsString
+    static let instance: QCURLQuery = QCURLQuery()
+    
+    private init() {
+        
     }
     
     func addQuery(parameterName name: String, parameterValue value: String) {
         let query = getURLQueryAsString(name, value: value)
         queries.append(query)
+    }
+    
+    func clearQueries() {
+        queries = []
     }
     
     private func getURLQueryAsString(parameter: String, value: String) -> String {
@@ -47,13 +54,17 @@ class QCURLQuery {
     
     func execute() {
         
+        if self.URL == nil {
+            return
+        }
+        
         let quakeSearchResultHandler: (NSData?, NSURLResponse?, NSError?) -> () = { (data: NSData?,response: NSURLResponse?,  error: NSError?) -> Void in
             do {
                 let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                 print("AsSynchronous\(jsonResult)")
-                let quakesToday = QCQuakeQueryResult(json: jsonResult)
+                self.searchResult = QCQuakeQueryResult(json: jsonResult)
                 if let delegateObj: QCURLQueryDelegate = self.delegate {
-                    delegateObj.didReturnSearchResults(quakesToday)
+                    delegateObj.didReturnSearchResults(self.searchResult!)
                 }
                 
             } catch {
@@ -61,7 +72,7 @@ class QCURLQuery {
             }
         }
         
-        let url: NSURL = NSURL(string: (URLWithQueries))!
+        let url: NSURL = NSURL(string: URLWithQueries)!
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: quakeSearchResultHandler)
         task.resume()
