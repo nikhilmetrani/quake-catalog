@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -53,7 +54,7 @@
         <!--Map-->
         <scene sceneID="fko-yx-sXR">
             <objects>
-                <viewController id="4jl-rJ-pJg" sceneMemberID="viewController">
+                <viewController id="4jl-rJ-pJg" customClass="QuakeMapViewController" customModule="Quake_Catalogue" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="k3d-LN-PGn"/>
                         <viewControllerLayoutGuide type="bottom" id="BgG-Y3-7gm"/>
@@ -61,11 +62,26 @@
                     <view key="view" contentMode="scaleToFill" id="ChD-I3-UOe">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="l9O-gz-fsz">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <animations/>
+                            </mapView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="l9O-gz-fsz" firstAttribute="leading" secondItem="ChD-I3-UOe" secondAttribute="leading" id="JfV-rK-Co2"/>
+                            <constraint firstAttribute="trailing" secondItem="l9O-gz-fsz" secondAttribute="trailing" id="Re3-jQ-gsR"/>
+                            <constraint firstItem="l9O-gz-fsz" firstAttribute="top" secondItem="ChD-I3-UOe" secondAttribute="top" id="Ubu-Py-HMr"/>
+                            <constraint firstItem="l9O-gz-fsz" firstAttribute="bottom" secondItem="BgG-Y3-7gm" secondAttribute="top" id="ghy-QC-Xwe"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" id="5dC-r8-6bS"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="l9O-gz-fsz" id="Oaq-Lu-TBc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V3u-Yb-uy1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -333,29 +349,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CL7-Jp-i9D">
-                                <rect key="frame" x="20" y="99" width="97" height="30"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Hnj-Yq-KSn">
+                                <rect key="frame" x="135" y="72" width="330" height="29"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="97" id="och-K2-mGb"/>
+                                    <constraint firstAttribute="width" constant="330" id="i0d-j6-ceD"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <segments>
+                                    <segment title="Map"/>
+                                    <segment title="Details"/>
+                                </segments>
+                                <connections>
+                                    <action selector="onViewToggle:" destination="5dk-dr-s7h" eventType="valueChanged" id="egc-QL-ZrR"/>
+                                </connections>
+                            </segmentedControl>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3do-Us-GXZ">
+                                <rect key="frame" x="0.0" y="140" width="600" height="460"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ZRc-gn-hlO">
+                                <rect key="frame" x="0.0" y="140" width="600" height="460"/>
+                                <animations/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epn-pn-X0o">
+                                <rect key="frame" x="20" y="111" width="560" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="CL7-Jp-i9D" firstAttribute="top" secondItem="Nwh-V5-SBg" secondAttribute="bottom" constant="35" id="QlU-DX-Dk8"/>
-                            <constraint firstItem="CL7-Jp-i9D" firstAttribute="leading" secondItem="q3F-Vz-b7c" secondAttribute="leadingMargin" id="vRa-p8-07h"/>
+                            <constraint firstItem="Hnj-Yq-KSn" firstAttribute="centerX" secondItem="3do-Us-GXZ" secondAttribute="centerX" id="73b-pY-IMO"/>
+                            <constraint firstAttribute="trailing" secondItem="ZRc-gn-hlO" secondAttribute="trailing" id="F2Y-El-x6D"/>
+                            <constraint firstItem="ZRc-gn-hlO" firstAttribute="bottom" secondItem="jXn-w3-tv8" secondAttribute="top" id="FAd-FE-VLe"/>
+                            <constraint firstItem="Hnj-Yq-KSn" firstAttribute="top" secondItem="Nwh-V5-SBg" secondAttribute="bottom" constant="8" symbolic="YES" id="Yp9-pk-ZQ8"/>
+                            <constraint firstItem="3do-Us-GXZ" firstAttribute="bottom" secondItem="jXn-w3-tv8" secondAttribute="top" id="bd6-yp-lhv"/>
+                            <constraint firstItem="3do-Us-GXZ" firstAttribute="leading" secondItem="q3F-Vz-b7c" secondAttribute="leading" id="eby-Rk-oOO"/>
+                            <constraint firstItem="ZRc-gn-hlO" firstAttribute="leading" secondItem="3do-Us-GXZ" secondAttribute="leading" id="k1b-wF-qu4"/>
+                            <constraint firstItem="3do-Us-GXZ" firstAttribute="top" secondItem="Hnj-Yq-KSn" secondAttribute="bottom" constant="40" id="lbT-Cw-sOZ"/>
+                            <constraint firstItem="3do-Us-GXZ" firstAttribute="top" secondItem="ZRc-gn-hlO" secondAttribute="top" id="u3t-Wz-68G"/>
+                            <constraint firstItem="ZRc-gn-hlO" firstAttribute="trailing" secondItem="3do-Us-GXZ" secondAttribute="trailing" id="wBW-r4-HkV"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="CL7-Jp-i9D"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Quake" id="Ehs-ph-4cg"/>
+                    <connections>
+                        <outlet property="mapView" destination="ZRc-gn-hlO" id="M3c-CW-74I"/>
+                        <outlet property="quakeTitle" destination="epn-pn-X0o" id="jgV-aZ-TwI"/>
+                        <outlet property="viewToggler" destination="Hnj-Yq-KSn" id="gxV-1H-r4q"/>
+                        <outlet property="webView" destination="3do-Us-GXZ" id="UWx-tW-kRK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ji-Lh-SDt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -392,7 +438,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vQy-dB-QnR" id="C0E-Sp-HOn">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="67.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TiX-be-Y3t">
