@@ -65,6 +65,8 @@ class QuakeMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
             
             self.features = QCURLQuery.instance.searchResult!.features
             
+            mapView.removeAnnotations(mapView.annotations)
+            
             if self.features.count > 0 {
                 
                 for quake in features{
