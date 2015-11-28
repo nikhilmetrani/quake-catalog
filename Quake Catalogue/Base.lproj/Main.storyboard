@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -30,7 +30,7 @@
             </objects>
             <point key="canvasLocation" x="-255" y="1143"/>
         </scene>
-        <!--Analytics-->
+        <!--Trend-->
         <scene sceneID="jeQ-er-5jM">
             <objects>
                 <viewController id="lGH-Yr-pAo" customClass="AnalyticsViewController" customModule="Quake_Catalogue" customModuleProvider="target" sceneMemberID="viewController">
@@ -71,7 +71,7 @@
                             <constraint firstItem="0Zs-AL-TCW" firstAttribute="top" secondItem="kgO-zN-ct1" secondAttribute="bottom" constant="96" id="o79-gY-Km3"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Analytics" image="tab_analytics2.png" id="qds-ZN-vbV"/>
+                    <tabBarItem key="tabBarItem" title="Trend" image="tab_analytics2.png" id="qds-ZN-vbV"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="containerView" destination="kgO-zN-ct1" id="7pk-BP-okD"/>
@@ -373,11 +373,11 @@
             </objects>
             <point key="canvasLocation" x="1513" y="226"/>
         </scene>
-        <!--Catalogue-->
+        <!--QuakeLog-->
         <scene sceneID="jqy-eS-aRC">
             <objects>
                 <navigationController navigationBarHidden="YES" id="UyZ-1A-ecX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Catalogue" image="tab_home.png" id="wbg-xV-4wN"/>
+                    <tabBarItem key="tabBarItem" title="QuakeLog" image="tab_home.png" id="wbg-xV-4wN"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XAq-I8-wU2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
