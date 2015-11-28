@@ -463,12 +463,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="6dc-Zr-zKg">
+                            <rect key="frame" x="0.0" y="160" width="600" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <color key="color" red="0.1513943952" green="0.3387480591" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="quakeCell" rowHeight="68" id="vQy-dB-QnR" customClass="QuakeTableViewCell" customModule="Quake_Catalogue" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vQy-dB-QnR" id="C0E-Sp-HOn">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="67.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TiX-be-Y3t">
@@ -530,6 +536,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Quakes" id="bFt-Nw-37l"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="6dc-Zr-zKg" id="uAc-f1-17g"/>
                         <segue destination="q71-pu-oH2" kind="showDetail" identifier="refineSearch" id="hui-fi-Uk0"/>
                     </connections>
                 </tableViewController>

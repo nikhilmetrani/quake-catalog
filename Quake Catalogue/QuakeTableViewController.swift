@@ -15,6 +15,8 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
     var quakeSearchResultController: QuakeSearchViewController? = nil
     var quakeSearchCriteria: QuakeSearchCriteria = QuakeSearchCriteria()
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var currentSearchResult: QCQuakeQueryResult?
     let quakeQueryURLAsString: String = "http://earthquake.usgs.gov/fdsnws/event/1/query"
     var urlQuery: QCURLQuery = QCURLQuery.instance
@@ -42,6 +44,9 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
         initializeSearchCriteria()
         urlQuery.createQueryFromSearchCriteria(quakeSearchCriteria)
         
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
+        
         self.urlQuery.execute()
         tableView.reloadData()
     }
@@ -52,6 +57,7 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
         //self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         
         //CourseModel.selectedCourse = courses[0]
+        activityIndicator.startAnimating()
         self.performSegueWithIdentifier("refineSearch", sender: nil)
     }
     
@@ -71,6 +77,7 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
     }
     
     func didReturnSearchResults(quakeSearchResult: QCQuakeQueryResult) {
+        activityIndicator.stopAnimating()
         currentSearchResult = quakeSearchResult
         tableView.reloadData()
     }
