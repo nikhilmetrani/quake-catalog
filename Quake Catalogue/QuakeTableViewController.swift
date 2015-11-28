@@ -129,7 +129,20 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
         let row = indexPath.row
         cell.magnitude?.text = "\(currentSearchResult!.features[row].mag!)"
         cell.place?.text = currentSearchResult!.features[row].place!
-        cell.coordinates?.text = "\(currentSearchResult!.features[row].geometry!.longitude!), \(currentSearchResult!.features[row].geometry!.latitude!)"
+        //cell.coordinates?.text = "\(currentSearchResult!.features[row].geometry!.longitude!), \(currentSearchResult!.features[row].geometry!.latitude!)"
+        
+        let time: Int = (currentSearchResult!.features[row].time! )/1000
+        
+        let theDate = NSDate(timeIntervalSince1970: NSTimeInterval(time))
+   
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.LongStyle
+        formatter.timeStyle = .MediumStyle
+        
+        let dateString = formatter.stringFromDate(theDate)
+        
+        print(dateString)
+        cell.coordinates?.text = dateString
         
         return cell
     }
