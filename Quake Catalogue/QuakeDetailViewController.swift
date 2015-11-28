@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class QuakeDetailViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class QuakeDetailViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIWebViewDelegate {
     
     @IBOutlet weak var quakeTitle: UILabel!
     
@@ -29,6 +29,9 @@ class QuakeDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     override func viewDidLoad() {
         
         super.viewDidLoad()
+         progress.stopAnimating()
+        
+        webView.delegate = self
         
         mapView.hidden = false
         webView.hidden = true
@@ -48,6 +51,7 @@ class QuakeDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             return;
         }
         
+        
         let venueLocation:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: selectedQuakeFeature!.geometry!.latitude!, longitude: selectedQuakeFeature!.geometry!.longitude!)
         
         let theRegion : MKCoordinateRegion = MKCoordinateRegion(center: venueLocation, span: theSpan)
@@ -60,16 +64,17 @@ class QuakeDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
     }
     
-    @IBOutlet weak var mapStackView: UIStackView!
-    
     func addMapAnnotation(venueLocation:CLLocationCoordinate2D, title:String, subTitle:String){
         let venuePoint = MKPointAnnotation()
         venuePoint.coordinate = venueLocation
         venuePoint.title = title
         venuePoint.subtitle = subTitle
         mapView.addAnnotation(venuePoint)
+        
     }
 
+    @IBOutlet weak var progress: UIActivityIndicatorView!
+    
     @IBAction func onViewToggle(sender: AnyObject) {
         
         switch viewToggler.selectedSegmentIndex
@@ -90,6 +95,14 @@ class QuakeDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    func webViewDidStartLoad(webView: UIWebView) {
+        progress.startAnimating()
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        progress.stopAnimating()
     }
     
     

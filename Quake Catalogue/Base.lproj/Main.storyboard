@@ -411,9 +411,6 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Hnj-Yq-KSn">
                                 <rect key="frame" x="135" y="72" width="330" height="29"/>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="330" id="i0d-j6-ceD"/>
-                                </constraints>
                                 <segments>
                                     <segment title="Map"/>
                                     <segment title="Details"/>
@@ -431,32 +428,46 @@
                                 <rect key="frame" x="0.0" y="140" width="600" height="460"/>
                                 <animations/>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epn-pn-X0o">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epn-pn-X0o">
                                 <rect key="frame" x="20" y="111" width="560" height="21"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="va2-jm-fqy"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="I9E-Xd-4WP">
+                                <rect key="frame" x="473" y="76" width="20" height="20"/>
+                                <animations/>
+                            </activityIndicatorView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Hnj-Yq-KSn" firstAttribute="centerX" secondItem="3do-Us-GXZ" secondAttribute="centerX" id="73b-pY-IMO"/>
-                            <constraint firstAttribute="trailing" secondItem="ZRc-gn-hlO" secondAttribute="trailing" id="F2Y-El-x6D"/>
-                            <constraint firstItem="ZRc-gn-hlO" firstAttribute="bottom" secondItem="jXn-w3-tv8" secondAttribute="top" id="FAd-FE-VLe"/>
-                            <constraint firstItem="Hnj-Yq-KSn" firstAttribute="top" secondItem="Nwh-V5-SBg" secondAttribute="bottom" constant="8" symbolic="YES" id="Yp9-pk-ZQ8"/>
-                            <constraint firstItem="3do-Us-GXZ" firstAttribute="bottom" secondItem="jXn-w3-tv8" secondAttribute="top" id="bd6-yp-lhv"/>
-                            <constraint firstItem="3do-Us-GXZ" firstAttribute="leading" secondItem="q3F-Vz-b7c" secondAttribute="leading" id="eby-Rk-oOO"/>
-                            <constraint firstItem="ZRc-gn-hlO" firstAttribute="leading" secondItem="3do-Us-GXZ" secondAttribute="leading" id="k1b-wF-qu4"/>
-                            <constraint firstItem="3do-Us-GXZ" firstAttribute="top" secondItem="Hnj-Yq-KSn" secondAttribute="bottom" constant="40" id="lbT-Cw-sOZ"/>
-                            <constraint firstItem="3do-Us-GXZ" firstAttribute="top" secondItem="ZRc-gn-hlO" secondAttribute="top" id="u3t-Wz-68G"/>
-                            <constraint firstItem="ZRc-gn-hlO" firstAttribute="trailing" secondItem="3do-Us-GXZ" secondAttribute="trailing" id="wBW-r4-HkV"/>
+                            <constraint firstItem="ZRc-gn-hlO" firstAttribute="trailing" secondItem="3do-Us-GXZ" secondAttribute="trailing" id="3aa-2b-awp"/>
+                            <constraint firstItem="I9E-Xd-4WP" firstAttribute="leading" secondItem="Hnj-Yq-KSn" secondAttribute="trailing" constant="8" symbolic="YES" id="8O4-Ri-NOl"/>
+                            <constraint firstAttribute="trailing" secondItem="ZRc-gn-hlO" secondAttribute="trailing" id="FEX-b9-9tq"/>
+                            <constraint firstItem="ZRc-gn-hlO" firstAttribute="top" secondItem="epn-pn-X0o" secondAttribute="bottom" constant="8" symbolic="YES" id="QR6-di-tCA"/>
+                            <constraint firstItem="ZRc-gn-hlO" firstAttribute="bottom" secondItem="jXn-w3-tv8" secondAttribute="top" id="Qlj-Ds-uee"/>
+                            <constraint firstItem="epn-pn-X0o" firstAttribute="top" secondItem="Hnj-Yq-KSn" secondAttribute="bottom" constant="11" id="RlY-LW-zb2"/>
+                            <constraint firstItem="Hnj-Yq-KSn" firstAttribute="centerY" secondItem="I9E-Xd-4WP" secondAttribute="centerY" id="WHr-59-z0D"/>
+                            <constraint firstItem="3do-Us-GXZ" firstAttribute="bottom" secondItem="jXn-w3-tv8" secondAttribute="top" id="Wpd-2T-TAf"/>
+                            <constraint firstItem="Hnj-Yq-KSn" firstAttribute="top" secondItem="Nwh-V5-SBg" secondAttribute="bottom" constant="8" symbolic="YES" id="X9U-ay-GR5"/>
+                            <constraint firstItem="3do-Us-GXZ" firstAttribute="leading" secondItem="q3F-Vz-b7c" secondAttribute="leading" id="aLx-f3-rhH"/>
+                            <constraint firstItem="epn-pn-X0o" firstAttribute="leading" secondItem="q3F-Vz-b7c" secondAttribute="leadingMargin" id="csd-h9-jcX"/>
+                            <constraint firstItem="ZRc-gn-hlO" firstAttribute="top" secondItem="3do-Us-GXZ" secondAttribute="top" id="llF-8I-FCZ"/>
+                            <constraint firstItem="Hnj-Yq-KSn" firstAttribute="centerX" secondItem="epn-pn-X0o" secondAttribute="centerX" id="luU-S6-gNf"/>
+                            <constraint firstItem="3do-Us-GXZ" firstAttribute="centerX" secondItem="epn-pn-X0o" secondAttribute="centerX" id="qi3-kF-FeL"/>
+                            <constraint firstItem="ZRc-gn-hlO" firstAttribute="leading" secondItem="3do-Us-GXZ" secondAttribute="leading" id="u84-wj-18y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="I9E-Xd-4WP" secondAttribute="trailing" constant="87" id="zrj-aK-j1N"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Quake" id="Ehs-ph-4cg"/>
+                    <navigationItem key="navigationItem" title="QuakeInfo" id="Ehs-ph-4cg"/>
                     <connections>
                         <outlet property="mapView" destination="ZRc-gn-hlO" id="M3c-CW-74I"/>
+                        <outlet property="progress" destination="I9E-Xd-4WP" id="1xq-5P-FHO"/>
                         <outlet property="quakeTitle" destination="epn-pn-X0o" id="jgV-aZ-TwI"/>
                         <outlet property="viewToggler" destination="Hnj-Yq-KSn" id="gxV-1H-r4q"/>
                         <outlet property="webView" destination="3do-Us-GXZ" id="UWx-tW-kRK"/>
