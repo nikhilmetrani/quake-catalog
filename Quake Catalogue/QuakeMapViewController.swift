@@ -22,6 +22,10 @@ class QuakeMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     
     let theSpan = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
     
+    
+    var locations:[MKAnnotation]!
+
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -36,6 +40,7 @@ class QuakeMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         
         
         mapView.showsUserLocation = true
+        mapView.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -52,7 +57,8 @@ class QuakeMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     func refreshMap(){
-        
+        //mapView.removeAnnotations(mapView.annotations)
+        locations = [MKAnnotation]()
         if hitCount != QCURLQuery.instance.hitCount{
             
             self.hitCount = QCURLQuery.instance.hitCount
@@ -69,24 +75,66 @@ class QuakeMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
                     
                     mapView.setRegion(theRegion, animated: true)
                     
-                    addMapAnnotation(venueLocation, title:quake.title!, subTitle:"")
+                    addMapAnnotation(venueLocation, title:quake.title!, subTitle:"", feature: quake)
                     
                 }
-                
+                mapView.addAnnotations(locations)
             }
             
         }
 
     }
     
-    func addMapAnnotation(venueLocation:CLLocationCoordinate2D, title:String, subTitle:String){
-        let venuePoint = MKPointAnnotation()
+    func addMapAnnotation(venueLocation:CLLocationCoordinate2D, title:String, subTitle:String, feature:QCQuakeFeature){
+        let venuePoint = QCMapAnnotation()
         venuePoint.coordinate = venueLocation
         venuePoint.title = title
         venuePoint.subtitle = subTitle
-        mapView.addAnnotation(venuePoint)
+        venuePoint.feature = feature;
+        locations.append(venuePoint)
     }
     
+    
+    func mapView(mapView: MKMapView!,
+        viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+            
+            if annotation is MKUserLocation {
+                //return nil so map view draws "blue dot" for standard user location
+                return nil
+            }
+            
+            if annotation is QCMapAnnotation {
+                let myAnno:QCMapAnnotation = annotation as! QCMapAnnotation
+                
+                let reuseId = "pin"
+                var pinView:SVPulsingAnnotationView? =   mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? SVPulsingAnnotationView
+                if pinView == nil {
+                    pinView = SVPulsingAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+                    pinView!.annotationColor = self.getPinColor(myAnno.feature)//UIColor.redColor()
+                    pinView!.canShowCallout = true
+                    
+                }
+                else {
+                    pinView!.annotation = annotation
+                }
+                return pinView;
+            }
+            else{
+                return nil
+            }
+    }
+    
+    func getPinColor(feature: QCQuakeFeature) -> UIColor
+    {
+        if(feature.mag >= 6){
+            return UIColor.redColor()
+        }else if(feature.mag >= 5){
+            return UIColor.purpleColor()
+        }
+        else{
+            return UIColor.grayColor()
+        }
+    }
 
     /*
     // MARK: - Navigation
