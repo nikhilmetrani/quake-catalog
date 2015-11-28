@@ -12,11 +12,15 @@ import MapKit
 class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
     
     var detailViewController: QuakeDetailViewController? = nil
+    var quakeSearchResultController: QuakeSearchViewController? = nil
+    var quakeSearchCriteria: QuakeSearchCriteria = QuakeSearchCriteria()
     
     var currentSearchResult: QCQuakeQueryResult?
     let quakeQueryURLAsString: String = "http://earthquake.usgs.gov/fdsnws/event/1/query"
     var urlQuery: QCURLQuery = QCURLQuery.instance
     var quakeCoordinateAndSpan: (quakeCoordinates: CLLocationCoordinate2D, spanArea: MKCoordinateSpan)?
+    
+    let dateTimeComponents: QCDateTimeConponents = QCDateTimeConponents()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +28,6 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
         //self.title = "Quakes"
         
         //self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        
-        //let addButton = UIBarButtonItem(barButtonSystemItem: . , target: self, action: "insertNewObject:")
-        //self.navigationItem.rightBarButtonItem = addButton
         
         let buttonRefineSearch = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "refineSearchCriteria:")
         self.navigationItem.rightBarButtonItem = buttonRefineSearch
@@ -38,7 +39,8 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
         
         urlQuery.URL = quakeQueryURLAsString
         urlQuery.delegate = self
-        prepareUrlQueryForToday()
+        initializeSearchCriteria()
+        urlQuery.createQueryFromSearchCriteria(quakeSearchCriteria)
         
         self.urlQuery.execute()
         tableView.reloadData()
@@ -50,17 +52,22 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
         //self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         
         //CourseModel.selectedCourse = courses[0]
-        //self.performSegueWithIdentifier("refineSearch", sender: courses[0])
+        self.performSegueWithIdentifier("refineSearch", sender: nil)
+    }
+    
+    @IBAction func refineSearchDidReturn(segue: UIStoryboardSegue) {
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
         super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        tableView.reloadData()
+        //tableView.reloadData()
     }
     
     func didReturnSearchResults(quakeSearchResult: QCQuakeQueryResult) {
@@ -78,15 +85,22 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
         }
+        if segue.identifier == "refineSearch" {
+            quakeSearchResultController = segue.destinationViewController as? QuakeSearchViewController
+            quakeSearchResultController!.searchCriteria = quakeSearchCriteria
+            quakeSearchResultController!.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+            quakeSearchResultController!.navigationItem.leftItemsSupplementBackButton = true
+        }
     }
     
-    func prepareUrlQueryForToday() {
+    func initializeSearchCriteria() {
         let dateTimeComponents: QCDateTimeConponents = QCDateTimeConponents()
-        urlQuery.addQuery(parameterName: "starttime", parameterValue: dateTimeComponents.todayStart)
-        urlQuery.addQuery(parameterName: "endtime", parameterValue: dateTimeComponents.todayEnd)
-        urlQuery.addQuery(parameterName: "orderby", parameterValue: "time")
-        urlQuery.addQuery(parameterName: "format", parameterValue: "geojson")
-        urlQuery.addQuery(parameterName: "minmagnitude", parameterValue: "4")
+        
+        quakeSearchCriteria.minmagnitude = 4
+        quakeSearchCriteria.maxmagnitude = 4
+        quakeSearchCriteria.year = dateTimeComponents.year
+        quakeSearchCriteria.month = dateTimeComponents.month
+        quakeSearchCriteria.day = dateTimeComponents.day
     }
     
     // MARK: - Table View

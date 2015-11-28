@@ -9,8 +9,8 @@
 import Foundation
 
 class QuakeSearchCriteria {
-    var minmagnitude: Double?
-    var maxmagnitude: Double?
+    var minmagnitude: Int?
+    var maxmagnitude: Int?
     var year: Int?
     var month: Int?
     var day: Int?
