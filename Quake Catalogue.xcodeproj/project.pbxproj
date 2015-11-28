@@ -36,6 +36,10 @@
 		B722E50F1C09C56C009509DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B722E50B1C09C56C009509DB /* Foundation.framework */; };
 		B722E5101C09C56C009509DB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B722E50C1C09C56C009509DB /* QuartzCore.framework */; };
 		B722E5111C09C56C009509DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B722E50D1C09C56C009509DB /* UIKit.framework */; };
+		B722E5161C09F9C7009509DB /* tab_analytics2.png in Resources */ = {isa = PBXBuildFile; fileRef = B722E5121C09F9C7009509DB /* tab_analytics2.png */; };
+		B722E5171C09F9C7009509DB /* tab_home.png in Resources */ = {isa = PBXBuildFile; fileRef = B722E5131C09F9C7009509DB /* tab_home.png */; };
+		B722E5181C09F9C7009509DB /* tab_map.png in Resources */ = {isa = PBXBuildFile; fileRef = B722E5141C09F9C7009509DB /* tab_map.png */; };
+		B722E5191C09F9C7009509DB /* tab_twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = B722E5151C09F9C7009509DB /* tab_twitter.png */; };
 		BEF2C4E6DA6CC8270CBD020F /* Pods_Quake_Catalogue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25E7255AC0EF07D9735D22A3 /* Pods_Quake_Catalogue.framework */; };
 		BFFC5ADA1C09B39A00C2F08E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFFC5AD91C09B39A00C2F08E /* MapKit.framework */; };
 		BFFC5ADC1C09BFA400C2F08E /* QuakeMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC5ADB1C09BFA400C2F08E /* QuakeMapViewController.swift */; };
@@ -147,6 +151,10 @@
 		B722E50B1C09C56C009509DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B722E50C1C09C56C009509DB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B722E50D1C09C56C009509DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B722E5121C09F9C7009509DB /* tab_analytics2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_analytics2.png; path = images/tab_analytics2.png; sourceTree = "<group>"; };
+		B722E5131C09F9C7009509DB /* tab_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_home.png; path = images/tab_home.png; sourceTree = "<group>"; };
+		B722E5141C09F9C7009509DB /* tab_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_map.png; path = images/tab_map.png; sourceTree = "<group>"; };
+		B722E5151C09F9C7009509DB /* tab_twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_twitter.png; path = images/tab_twitter.png; sourceTree = "<group>"; };
 		BFFC5AD91C09B39A00C2F08E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BFFC5ADB1C09BFA400C2F08E /* QuakeMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuakeMapViewController.swift; sourceTree = "<group>"; };
 		D9EE93081DC07A2B86B3055A /* Pods-Quake Catalogue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quake Catalogue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Quake Catalogue/Pods-Quake Catalogue.debug.xcconfig"; sourceTree = "<group>"; };
@@ -209,8 +217,7 @@
 		0137D0CE1C002F5C00798A3F /* Quake Catalogue */ = {
 			isa = PBXGroup;
 			children = (
-				63E445E71C09F03900AE34D4 /* AuthViewController.swift */,
-				63E445D31C09EFDD00AE34D4 /* Swifter.xcodeproj */,
+				B722E51A1C09F9D2009509DB /* images */,
 				B722E5081C09B6D6009509DB /* Colors.swift */,
 				0367EF5D1C09D6830027D6E1 /* QCMapAnnotation.swift */,
 				0367EF5A1C09D2EC0027D6E1 /* SVPulsingAnnotationView.h */,
@@ -280,6 +287,17 @@
 				25E7255AC0EF07D9735D22A3 /* Pods_Quake_Catalogue.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B722E51A1C09F9D2009509DB /* images */ = {
+			isa = PBXGroup;
+			children = (
+				B722E5121C09F9C7009509DB /* tab_analytics2.png */,
+				B722E5131C09F9C7009509DB /* tab_home.png */,
+				B722E5141C09F9C7009509DB /* tab_map.png */,
+				B722E5151C09F9C7009509DB /* tab_twitter.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 		BC1C098DE8DCDA8BFEEEB524 /* Pods */ = {
@@ -441,7 +459,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0137D0DC1C002F5D00798A3F /* LaunchScreen.storyboard in Resources */,
+				B722E5191C09F9C7009509DB /* tab_twitter.png in Resources */,
+				B722E5161C09F9C7009509DB /* tab_analytics2.png in Resources */,
+				B722E5171C09F9C7009509DB /* tab_home.png in Resources */,
 				0137D0D91C002F5C00798A3F /* Assets.xcassets in Resources */,
+				B722E5181C09F9C7009509DB /* tab_map.png in Resources */,
 				0137D0D71C002F5C00798A3F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
