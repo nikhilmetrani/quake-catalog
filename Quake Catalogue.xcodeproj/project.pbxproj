@@ -217,6 +217,8 @@
 		0137D0CE1C002F5C00798A3F /* Quake Catalogue */ = {
 			isa = PBXGroup;
 			children = (
+				63E445E71C09F03900AE34D4 /* AuthViewController.swift */,
+				63E445D31C09EFDD00AE34D4 /* Swifter.xcodeproj */,
 				B722E51A1C09F9D2009509DB /* images */,
 				B722E5081C09B6D6009509DB /* Colors.swift */,
 				0367EF5D1C09D6830027D6E1 /* QCMapAnnotation.swift */,

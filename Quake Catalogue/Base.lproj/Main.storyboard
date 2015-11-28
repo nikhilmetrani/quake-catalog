@@ -71,7 +71,7 @@
                             <constraint firstItem="0Zs-AL-TCW" firstAttribute="top" secondItem="kgO-zN-ct1" secondAttribute="bottom" constant="96" id="o79-gY-Km3"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Analytics" id="qds-ZN-vbV"/>
+                    <tabBarItem key="tabBarItem" title="Analytics" image="tab_analytics2.png" id="qds-ZN-vbV"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="containerView" destination="kgO-zN-ct1" id="7pk-BP-okD"/>
@@ -107,7 +107,7 @@
                             <constraint firstItem="l9O-gz-fsz" firstAttribute="bottom" secondItem="BgG-Y3-7gm" secondAttribute="top" id="ghy-QC-Xwe"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="5dC-r8-6bS"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="tab_map.png" id="5dC-r8-6bS"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="l9O-gz-fsz" id="Oaq-Lu-TBc"/>
@@ -117,7 +117,7 @@
             </objects>
             <point key="canvasLocation" x="783" y="938"/>
         </scene>
-        <!--News-->
+        <!--Social-->
         <scene sceneID="6Wa-jO-Z3Y">
             <objects>
                 <viewController id="cfe-wc-gLN" customClass="AuthViewController" customModule="Quake_Catalogue" customModuleProvider="target" sceneMemberID="viewController">
@@ -172,7 +172,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <tabBarItem key="tabBarItem" title="News" id="U9p-gl-Ygt"/>
+                    <tabBarItem key="tabBarItem" title="Social" image="tab_twitter.png" id="U9p-gl-Ygt"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="fOI-wR-OJE" id="Lvs-0i-ciA"/>
@@ -377,7 +377,7 @@
         <scene sceneID="jqy-eS-aRC">
             <objects>
                 <navigationController navigationBarHidden="YES" id="UyZ-1A-ecX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Catalogue" id="wbg-xV-4wN"/>
+                    <tabBarItem key="tabBarItem" title="Catalogue" image="tab_home.png" id="wbg-xV-4wN"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XAq-I8-wU2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -608,6 +608,12 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="tab_analytics2.png" width="25" height="25"/>
+        <image name="tab_home.png" width="25" height="25"/>
+        <image name="tab_map.png" width="25" height="25"/>
+        <image name="tab_twitter.png" width="25" height="25"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8Zt-OJ-ER5"/>
     </inferredMetricsTieBreakers>
