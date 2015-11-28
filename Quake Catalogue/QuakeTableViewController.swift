@@ -15,6 +15,8 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
     var quakeSearchResultController: QuakeSearchViewController? = nil
     var quakeSearchCriteria: QuakeSearchCriteria = QuakeSearchCriteria()
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var currentSearchResult: QCQuakeQueryResult?
     let quakeQueryURLAsString: String = "http://earthquake.usgs.gov/fdsnws/event/1/query"
     var urlQuery: QCURLQuery = QCURLQuery.instance
@@ -42,6 +44,9 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
         initializeSearchCriteria()
         urlQuery.createQueryFromSearchCriteria(quakeSearchCriteria)
         
+        //activityIndicator.hidesWhenStopped = true
+        //activityIndicator.startAnimating()
+        
         self.urlQuery.execute()
         tableView.reloadData()
     }
@@ -52,6 +57,7 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
         //self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         
         //CourseModel.selectedCourse = courses[0]
+        //activityIndicator.startAnimating()
         self.performSegueWithIdentifier("refineSearch", sender: nil)
     }
     
@@ -71,6 +77,7 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
     }
     
     func didReturnSearchResults(quakeSearchResult: QCQuakeQueryResult) {
+        //activityIndicator.stopAnimating()
         currentSearchResult = quakeSearchResult
         tableView.reloadData()
     }
@@ -122,7 +129,21 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
         let row = indexPath.row
         cell.magnitude?.text = "\(currentSearchResult!.features[row].mag!)"
         cell.place?.text = currentSearchResult!.features[row].place!
-        cell.coordinates?.text = "\(currentSearchResult!.features[row].geometry!.longitude!), \(currentSearchResult!.features[row].geometry!.latitude!)"
+        //cell.coordinates?.text = "\(currentSearchResult!.features[row].geometry!.longitude!), \(currentSearchResult!.features[row].geometry!.latitude!)"
+        cell.magnitude!.textColor = getColorFromMagnitugeAsUIColor(currentSearchResult!.features[row].mag!)
+        
+        let time: Int = (currentSearchResult!.features[row].time! )/1000
+        
+        let theDate = NSDate(timeIntervalSince1970: NSTimeInterval(time))
+   
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.LongStyle
+        formatter.timeStyle = .MediumStyle
+        
+        let dateString = formatter.stringFromDate(theDate)
+        
+        print(dateString)
+        cell.coordinates?.text = dateString
         
         return cell
     }
@@ -139,5 +160,17 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }*/
+    
+    func getColorFromMagnitugeAsUIColor(magnitude: Double) -> UIColor {
+        if magnitude >= 6 {
+            return UIColor.redColor()
+        } else if magnitude >= 5 {
+            return UIColor.orangeColor()
+        } else if magnitude >= 4 {
+            return UIColor.purpleColor()
+        } else {
+            return UIColor.grayColor()
+        }
+    }
 
 }

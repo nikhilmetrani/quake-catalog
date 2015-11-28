@@ -79,8 +79,8 @@ class QuakeMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
             self.hitCount = QCURLQuery.instance.hitCount
             
             self.features = QCURLQuery.instance.searchResult!.features
+
             
-            print("hasQuakes:\(self.features.count)")
             if self.features.count > 0 {
                 
                 for quake in features{
@@ -124,8 +124,7 @@ class QuakeMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     
-    func mapView(mapView: MKMapView!,
-        viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
             
             if annotation is MKUserLocation {
                 //return nil so map view draws "blue dot" for standard user location

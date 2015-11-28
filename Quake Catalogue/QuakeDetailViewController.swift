@@ -44,6 +44,10 @@ class QuakeDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         mapView.showsUserLocation = true
         
+        if(selectedQuakeFeature == nil){
+            return;
+        }
+        
         let venueLocation:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: selectedQuakeFeature!.geometry!.latitude!, longitude: selectedQuakeFeature!.geometry!.longitude!)
         
         let theRegion : MKCoordinateRegion = MKCoordinateRegion(center: venueLocation, span: theSpan)
