@@ -33,7 +33,7 @@
         <!--Analytics-->
         <scene sceneID="jeQ-er-5jM">
             <objects>
-                <viewController id="lGH-Yr-pAo" sceneMemberID="viewController">
+                <viewController id="lGH-Yr-pAo" customClass="AnalyticsViewController" customModule="Quake_Catalogue" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eRp-qt-qjp"/>
                         <viewControllerLayoutGuide type="bottom" id="0Zs-AL-TCW"/>
@@ -41,11 +41,41 @@
                     <view key="view" contentMode="scaleToFill" id="64J-Dw-aHV">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ibq-TO-KYL">
+                                <rect key="frame" x="20" y="20" width="560" height="29"/>
+                                <animations/>
+                                <segments>
+                                    <segment title="Magnitude Range"/>
+                                    <segment title="Time Series"/>
+                                </segments>
+                                <connections>
+                                    <action selector="onSegmentChanged:" destination="lGH-Yr-pAo" eventType="valueChanged" id="5lF-l7-ScY"/>
+                                </connections>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kgO-zN-ct1" userLabel="Container">
+                                <rect key="frame" x="0.0" y="116" width="600" height="339"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="ibq-TO-KYL" secondAttribute="trailing" id="1aa-xb-M9R"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="ibq-TO-KYL" secondAttribute="leading" id="J7y-XM-5tM"/>
+                            <constraint firstItem="kgO-zN-ct1" firstAttribute="centerX" secondItem="ibq-TO-KYL" secondAttribute="centerX" id="WSg-66-b19"/>
+                            <constraint firstItem="kgO-zN-ct1" firstAttribute="top" secondItem="eRp-qt-qjp" secondAttribute="bottom" constant="96" id="ZAQ-4g-krU"/>
+                            <constraint firstItem="kgO-zN-ct1" firstAttribute="top" secondItem="ibq-TO-KYL" secondAttribute="bottom" constant="68" id="hbS-40-iOe"/>
+                            <constraint firstItem="kgO-zN-ct1" firstAttribute="width" secondItem="64J-Dw-aHV" secondAttribute="width" id="nUS-qz-S29"/>
+                            <constraint firstItem="0Zs-AL-TCW" firstAttribute="top" secondItem="kgO-zN-ct1" secondAttribute="bottom" constant="96" id="o79-gY-Km3"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Analytics" id="qds-ZN-vbV"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="containerView" destination="kgO-zN-ct1" id="7pk-BP-okD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ljn-sD-3c8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

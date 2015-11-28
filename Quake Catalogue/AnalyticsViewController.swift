@@ -15,12 +15,10 @@ class AnalyticsViewController: UIViewController {
     var pieChart: PNPieChart!
     var lineChart: PNLineChart!
     
+    @IBOutlet weak var containerView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupPieView()
-        refreshPieChart()
-        setupLineChart()
-        refreshLineChart()
+        onIndexSelected(0)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -32,7 +30,26 @@ class AnalyticsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    private func setupPieView() {
+    @IBAction func onSegmentChanged(sender: UISegmentedControl) {
+        onIndexSelected(sender.selectedSegmentIndex)
+    }
+    func onIndexSelected(index: Int) {
+        let subViews = self.containerView.subviews
+        
+        for subView in subViews {
+            subView.removeFromSuperview()
+        }
+        
+        if(index == 0) {
+            setupPieChart()
+            refreshPieChart()
+        }
+        else {
+            setupLineChart()
+            refreshLineChart()
+        }
+    }
+    private func setupPieChart() {
         let width = self.view.bounds.width
         self.pieChart = PNPieChart(frame: CGRectMake(0, 135.0, width, 200.0))
         self.pieChart.descriptionTextColor = UIColor.blackColor()
@@ -42,7 +59,7 @@ class AnalyticsViewController: UIViewController {
         self.pieChart.showOnlyValues = false
         self.pieChart.legendStyle = PNLegendItemStyle.Serial
         self.pieChart.legendFont = UIFont.boldSystemFontOfSize(12.0)
-        self.view.addSubview(pieChart)
+        self.containerView.addSubview(pieChart)
     }
     
     private func setupLineChart() {
@@ -51,12 +68,13 @@ class AnalyticsViewController: UIViewController {
         self.lineChart.yLabelFormat = "%1.1f";
         self.lineChart.backgroundColor = UIColor.clearColor()
         self.lineChart.yLabels = ["0", "2", "4", "6", "8"]
-        self.lineChart.xLabels = ["Magnitudes"]
+        self.lineChart.xLabels = [""]
 
         self.lineChart.showCoordinateAxis = true
-        self.lineChart.yValueMax = 8.0
-        self.lineChart.yValueMin = 0.0
-        self.view.addSubview(lineChart)
+        self.lineChart.yFixedValueMax = 8.0
+        self.lineChart.yFixedValueMin = 0.0
+        
+        self.containerView.addSubview(lineChart)
     }
     
     private func refreshPieChart() {
@@ -74,25 +92,27 @@ class AnalyticsViewController: UIViewController {
             }
             magnitudeCount[key]!++
         }
-        
+
         for (key,value) in magnitudeCount {
-            let item = PNPieChartDataItem(value: CGFloat(value), color: PNGreen, description: "Mag:\(key) - \(key+1)")
+            let item = PNPieChartDataItem(value: CGFloat(value), color: PieCharColors[key], description: "Mag:\(key) - \(key+1)")
             chartItems.append(item)
         }
         self.pieChart.updateChartData(chartItems)
-        //let legend = self.pieChartView.getLegendWithMaxWidth(320.0)
-        //legend.frame = CGRectMake(130, 350, legend.frame.size.width, legend.frame.size.height)
+        let legend = self.pieChart.getLegendWithMaxWidth(320.0)
+        legend.frame = CGRectMake(130, 350, legend.frame.size.width, legend.frame.size.height)
+        self.containerView.addSubview(legend)
     }
     
     private func refreshLineChart() {
         let magnitudes = QCURLQuery.instance.searchResult?.features.map({$0.mag})
-        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy hh:mm"
         let chartData = PNLineChartData()
-        chartData.dataTitle = "Magnitude";
-        chartData.color = PNFreshGreen;
+        chartData.dataTitle = "Magnitude"
+        chartData.color = UIColor.blueColor()
         chartData.alpha = 0.3
-        let count = (magnitudes?.count)! - 1
-        chartData.itemCount = UInt(count)
+        let count = (magnitudes?.count)!
+        chartData.itemCount = UInt(count)        
         chartData.inflexionPointStyle = PNLineChartPointStyle.Triangle;
         chartData.getData = { index in
             let mag = CGFloat(magnitudes![Int(index)]!)
@@ -100,6 +120,8 @@ class AnalyticsViewController: UIViewController {
         }
         self.lineChart.chartData = [chartData]
         self.lineChart.strokeChart()
-        //self.lineChart.updateChartData([chartData])
+        let legend = self.lineChart.getLegendWithMaxWidth(320.0)
+        legend.frame = CGRectMake(130, 350, legend.frame.size.width, legend.frame.size.height)
+        self.containerView.addSubview(legend)
     }
 }
