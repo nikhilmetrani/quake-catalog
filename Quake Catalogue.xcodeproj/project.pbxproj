@@ -13,16 +13,16 @@
 		0137D0DC1C002F5D00798A3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0137D0DA1C002F5D00798A3F /* LaunchScreen.storyboard */; };
 		0137D0E71C002F5D00798A3F /* Quake_CatalogueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D0E61C002F5D00798A3F /* Quake_CatalogueTests.swift */; };
 		0137D0F21C002F5D00798A3F /* Quake_CatalogueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D0F11C002F5D00798A3F /* Quake_CatalogueUITests.swift */; };
-		0137D1001C00A84700798A3F /* LatestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D0FF1C00A84700798A3F /* LatestViewController.swift */; };
 		0137D1021C014D2A00798A3F /* QCURLQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D1011C014D2A00798A3F /* QCURLQuery.swift */; };
 		0137D1041C01585100798A3F /* QCDateTimeComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D1031C01585100798A3F /* QCDateTimeComponents.swift */; };
 		0137D1081C0162B300798A3F /* QCQuakeQueryResultMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D1071C0162B300798A3F /* QCQuakeQueryResultMetadata.swift */; };
 		0137D10A1C01645E00798A3F /* QCQuakeQueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D1091C01645E00798A3F /* QCQuakeQueryResult.swift */; };
 		0137D10C1C0167F500798A3F /* QCQuakePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D10B1C0167F500798A3F /* QCQuakePoint.swift */; };
 		0137D10E1C016A4900798A3F /* QCQuakeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D10D1C016A4900798A3F /* QCQuakeFeature.swift */; };
-		0137D1101C01F05300798A3F /* SearchMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D10F1C01F05300798A3F /* SearchMasterViewController.swift */; };
 		0137D1121C01F0E500798A3F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D1111C01F0E500798A3F /* TabBarViewController.swift */; };
 		0137D1161C074D7C00798A3F /* QuakeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D1151C074D7C00798A3F /* QuakeTableViewCell.swift */; };
+		0137D11C1C09699300798A3F /* QuakeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D11B1C09699300798A3F /* QuakeDetailViewController.swift */; };
+		0137D11E1C09740400798A3F /* QuakeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137D11D1C09740400798A3F /* QuakeTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,16 +55,16 @@
 		0137D0ED1C002F5D00798A3F /* Quake CatalogueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Quake CatalogueUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0137D0F11C002F5D00798A3F /* Quake_CatalogueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quake_CatalogueUITests.swift; sourceTree = "<group>"; };
 		0137D0F31C002F5D00798A3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0137D0FF1C00A84700798A3F /* LatestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestViewController.swift; sourceTree = "<group>"; };
 		0137D1011C014D2A00798A3F /* QCURLQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCURLQuery.swift; sourceTree = "<group>"; };
 		0137D1031C01585100798A3F /* QCDateTimeComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCDateTimeComponents.swift; sourceTree = "<group>"; };
 		0137D1071C0162B300798A3F /* QCQuakeQueryResultMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCQuakeQueryResultMetadata.swift; sourceTree = "<group>"; };
 		0137D1091C01645E00798A3F /* QCQuakeQueryResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCQuakeQueryResult.swift; sourceTree = "<group>"; };
 		0137D10B1C0167F500798A3F /* QCQuakePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCQuakePoint.swift; sourceTree = "<group>"; };
 		0137D10D1C016A4900798A3F /* QCQuakeFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCQuakeFeature.swift; sourceTree = "<group>"; };
-		0137D10F1C01F05300798A3F /* SearchMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMasterViewController.swift; sourceTree = "<group>"; };
 		0137D1111C01F0E500798A3F /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		0137D1151C074D7C00798A3F /* QuakeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuakeTableViewCell.swift; sourceTree = "<group>"; };
+		0137D11B1C09699300798A3F /* QuakeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuakeDetailViewController.swift; sourceTree = "<group>"; };
+		0137D11D1C09740400798A3F /* QuakeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuakeTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,16 +120,16 @@
 				0137D0D81C002F5C00798A3F /* Assets.xcassets */,
 				0137D0DA1C002F5D00798A3F /* LaunchScreen.storyboard */,
 				0137D0DD1C002F5D00798A3F /* Info.plist */,
-				0137D0FF1C00A84700798A3F /* LatestViewController.swift */,
 				0137D1011C014D2A00798A3F /* QCURLQuery.swift */,
 				0137D1031C01585100798A3F /* QCDateTimeComponents.swift */,
 				0137D1071C0162B300798A3F /* QCQuakeQueryResultMetadata.swift */,
 				0137D1091C01645E00798A3F /* QCQuakeQueryResult.swift */,
 				0137D10B1C0167F500798A3F /* QCQuakePoint.swift */,
 				0137D10D1C016A4900798A3F /* QCQuakeFeature.swift */,
-				0137D10F1C01F05300798A3F /* SearchMasterViewController.swift */,
 				0137D1111C01F0E500798A3F /* TabBarViewController.swift */,
 				0137D1151C074D7C00798A3F /* QuakeTableViewCell.swift */,
+				0137D11B1C09699300798A3F /* QuakeDetailViewController.swift */,
+				0137D11D1C09740400798A3F /* QuakeTableViewController.swift */,
 			);
 			path = "Quake Catalogue";
 			sourceTree = "<group>";
@@ -287,14 +287,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0137D1161C074D7C00798A3F /* QuakeTableViewCell.swift in Sources */,
-				0137D1101C01F05300798A3F /* SearchMasterViewController.swift in Sources */,
 				0137D1041C01585100798A3F /* QCDateTimeComponents.swift in Sources */,
+				0137D11C1C09699300798A3F /* QuakeDetailViewController.swift in Sources */,
 				0137D1021C014D2A00798A3F /* QCURLQuery.swift in Sources */,
 				0137D0D01C002F5C00798A3F /* AppDelegate.swift in Sources */,
 				0137D1081C0162B300798A3F /* QCQuakeQueryResultMetadata.swift in Sources */,
 				0137D10C1C0167F500798A3F /* QCQuakePoint.swift in Sources */,
-				0137D1001C00A84700798A3F /* LatestViewController.swift in Sources */,
 				0137D10E1C016A4900798A3F /* QCQuakeFeature.swift in Sources */,
+				0137D11E1C09740400798A3F /* QuakeTableViewController.swift in Sources */,
 				0137D1121C01F0E500798A3F /* TabBarViewController.swift in Sources */,
 				0137D10A1C01645E00798A3F /* QCQuakeQueryResult.swift in Sources */,
 			);
