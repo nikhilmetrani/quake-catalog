@@ -80,6 +80,9 @@
 		0137D11D1C09740400798A3F /* QuakeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuakeTableViewController.swift; sourceTree = "<group>"; };
 		0137D11F1C09878400798A3F /* QuakeSearchCriteria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuakeSearchCriteria.swift; sourceTree = "<group>"; };
 		0137D1411C099FF500798A3F /* QuakeSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuakeSearchViewController.swift; sourceTree = "<group>"; };
+		0367EF5A1C09D2EC0027D6E1 /* SVPulsingAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPulsingAnnotationView.h; sourceTree = "<group>"; };
+		0367EF5B1C09D2EC0027D6E1 /* SVPulsingAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPulsingAnnotationView.m; sourceTree = "<group>"; };
+		0367EF5D1C09D6830027D6E1 /* QCMapAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCMapAnnotation.swift; sourceTree = "<group>"; };
 		25E7255AC0EF07D9735D22A3 /* Pods_Quake_Catalogue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quake_Catalogue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		733E9BAA37B6384B3E20B621 /* Pods-Quake Catalogue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quake Catalogue.release.xcconfig"; path = "Pods/Target Support Files/Pods-Quake Catalogue/Pods-Quake Catalogue.release.xcconfig"; sourceTree = "<group>"; };
 		B722E5051C09B56C009509DB /* Quake Catalogue-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Quake Catalogue-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -89,10 +92,6 @@
 		B722E50B1C09C56C009509DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B722E50C1C09C56C009509DB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B722E50D1C09C56C009509DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		0367EF591C09D2EB0027D6E1 /* Quake Catalogue-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Quake Catalogue-Bridging-Header.h"; sourceTree = "<group>"; };
-		0367EF5A1C09D2EC0027D6E1 /* SVPulsingAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPulsingAnnotationView.h; sourceTree = "<group>"; };
-		0367EF5B1C09D2EC0027D6E1 /* SVPulsingAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPulsingAnnotationView.m; sourceTree = "<group>"; };
-		0367EF5D1C09D6830027D6E1 /* QCMapAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCMapAnnotation.swift; sourceTree = "<group>"; };
 		BFFC5AD91C09B39A00C2F08E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BFFC5ADB1C09BFA400C2F08E /* QuakeMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuakeMapViewController.swift; sourceTree = "<group>"; };
 		D9EE93081DC07A2B86B3055A /* Pods-Quake Catalogue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quake Catalogue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Quake Catalogue/Pods-Quake Catalogue.debug.xcconfig"; sourceTree = "<group>"; };
@@ -178,7 +177,6 @@
 				B722E5061C09B5C5009509DB /* AnalyticsViewController.swift */,
 				0137D1411C099FF500798A3F /* QuakeSearchViewController.swift */,
 				BFFC5ADB1C09BFA400C2F08E /* QuakeMapViewController.swift */,
-				0367EF591C09D2EB0027D6E1 /* Quake Catalogue-Bridging-Header.h */,
 			);
 			path = "Quake Catalogue";
 			sourceTree = "<group>";
@@ -294,7 +292,7 @@
 				TargetAttributes = {
 					0137D0CB1C002F5C00798A3F = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = 3668EK285R;
+						DevelopmentTeam = 4AC6S87TJD;
 					};
 					0137D0E11C002F5D00798A3F = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -567,6 +565,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Quake Catalogue/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "sg.edu.nus.wma.group04.Quake-Catalogue";
@@ -582,6 +581,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Quake Catalogue/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "sg.edu.nus.wma.group04.Quake-Catalogue";
