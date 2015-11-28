@@ -220,6 +220,8 @@
 				63E445E71C09F03900AE34D4 /* AuthViewController.swift */,
 				63E445D31C09EFDD00AE34D4 /* Swifter.xcodeproj */,
 				B722E51A1C09F9D2009509DB /* images */,
+				63E445E71C09F03900AE34D4 /* AuthViewController.swift */,
+				63E445D31C09EFDD00AE34D4 /* Swifter.xcodeproj */,
 				B722E5081C09B6D6009509DB /* Colors.swift */,
 				0367EF5D1C09D6830027D6E1 /* QCMapAnnotation.swift */,
 				0367EF5A1C09D2EC0027D6E1 /* SVPulsingAnnotationView.h */,
