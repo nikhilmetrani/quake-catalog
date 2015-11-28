@@ -11,18 +11,21 @@ import PNChart
 
 class AnalyticsViewController: UIViewController {
     
+    var selectedIndex = 0
     @IBOutlet weak var stackView: UIStackView!
     var pieChart: PNPieChart!
     var lineChart: PNLineChart!
     
     @IBOutlet weak var containerView: UIView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        onIndexSelected(0)
+        //onIndexSelected(0)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        onIndexSelected(selectedIndex)
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,6 +37,7 @@ class AnalyticsViewController: UIViewController {
         onIndexSelected(sender.selectedSegmentIndex)
     }
     func onIndexSelected(index: Int) {
+        self.selectedIndex = index
         let subViews = self.containerView.subviews
         
         for subView in subViews {
