@@ -44,8 +44,8 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
         initializeSearchCriteria()
         urlQuery.createQueryFromSearchCriteria(quakeSearchCriteria)
         
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.startAnimating()
+        //activityIndicator.hidesWhenStopped = true
+        //activityIndicator.startAnimating()
         
         self.urlQuery.execute()
         tableView.reloadData()
@@ -57,7 +57,7 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
         //self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         
         //CourseModel.selectedCourse = courses[0]
-        activityIndicator.startAnimating()
+        //activityIndicator.startAnimating()
         self.performSegueWithIdentifier("refineSearch", sender: nil)
     }
     
@@ -77,7 +77,7 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
     }
     
     func didReturnSearchResults(quakeSearchResult: QCQuakeQueryResult) {
-        activityIndicator.stopAnimating()
+        //activityIndicator.stopAnimating()
         currentSearchResult = quakeSearchResult
         tableView.reloadData()
     }
@@ -130,6 +130,7 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
         cell.magnitude?.text = "\(currentSearchResult!.features[row].mag!)"
         cell.place?.text = currentSearchResult!.features[row].place!
         //cell.coordinates?.text = "\(currentSearchResult!.features[row].geometry!.longitude!), \(currentSearchResult!.features[row].geometry!.latitude!)"
+        cell.magnitude!.textColor = getColorFromMagnitugeAsUIColor(currentSearchResult!.features[row].mag!)
         
         let time: Int = (currentSearchResult!.features[row].time! )/1000
         
@@ -159,5 +160,17 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }*/
+    
+    func getColorFromMagnitugeAsUIColor(magnitude: Double) -> UIColor {
+        if magnitude >= 6 {
+            return UIColor.redColor()
+        } else if magnitude >= 5 {
+            return UIColor.orangeColor()
+        } else if magnitude >= 4 {
+            return UIColor.purpleColor()
+        } else {
+            return UIColor.grayColor()
+        }
+    }
 
 }
