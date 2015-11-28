@@ -19,6 +19,8 @@ class QCURLQuery {
     var delegate: QCURLQueryDelegate?
     var searchResult: QCQuakeQueryResult?
     
+    var hitCount:Int = 0;
+    
     var URLWithQueries: String {
         get {
             return "\(URL!)?\(concatnateURLQueriesAsString())"
@@ -29,6 +31,32 @@ class QCURLQuery {
     
     private init() {
         
+    }
+    
+    func createQueryFromSearchCriteria(searchCriteria: QuakeSearchCriteria) {
+        clearQueries()
+        if let minmag = searchCriteria.minmagnitude {
+            addQuery(parameterName: "minmagnitude", parameterValue: "\(minmag)")
+            if let maxmag = searchCriteria.maxmagnitude {
+                if maxmag > minmag {
+                    addQuery(parameterName: "maxmagnitude", parameterValue: "\(maxmag)")
+                }
+            }
+        }
+        
+        if let year = searchCriteria.year {
+            if let month = searchCriteria.month {
+                if let day = searchCriteria.day {
+                    let startTime = "\(year)-\(month)-\(day)T00:00:00"
+                    let endTime = "\(year)-\(month)-\(day)T23:59:59"
+                    addQuery(parameterName: "starttime", parameterValue: startTime)
+                    addQuery(parameterName: "endtime", parameterValue: endTime)
+                    
+                }
+            }
+        }
+        addQuery(parameterName: "orderby", parameterValue: "time")
+        addQuery(parameterName: "format", parameterValue: "geojson")
     }
     
     func addQuery(parameterName name: String, parameterValue value: String) {
@@ -66,6 +94,7 @@ class QCURLQuery {
                 if let delegateObj: QCURLQueryDelegate = self.delegate {
                     delegateObj.didReturnSearchResults(self.searchResult!)
                 }
+                self.hitCount = self.hitCount + 1
                 
             } catch {
                 

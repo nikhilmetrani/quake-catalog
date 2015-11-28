@@ -119,6 +119,7 @@
 		0137D0C31C002F5C00798A3F = {
 			isa = PBXGroup;
 			children = (
+				BFFC5AD91C09B39A00C2F08E /* MapKit.framework */,
 				0137D0CE1C002F5C00798A3F /* Quake Catalogue */,
 				0137D0E51C002F5D00798A3F /* Quake CatalogueTests */,
 				0137D0F01C002F5D00798A3F /* Quake CatalogueUITests */,
@@ -402,6 +403,7 @@
 				0137D11E1C09740400798A3F /* QuakeTableViewController.swift in Sources */,
 				0137D1121C01F0E500798A3F /* TabBarViewController.swift in Sources */,
 				0137D10A1C01645E00798A3F /* QCQuakeQueryResult.swift in Sources */,
+				BFFC5ADC1C09BFA400C2F08E /* QuakeMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
