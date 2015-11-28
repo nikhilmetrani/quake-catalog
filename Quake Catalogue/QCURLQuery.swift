@@ -19,6 +19,8 @@ class QCURLQuery {
     var delegate: QCURLQueryDelegate?
     var searchResult: QCQuakeQueryResult?
     
+    var hitCount:Int = 0;
+    
     var URLWithQueries: String {
         get {
             return "\(URL!)?\(concatnateURLQueriesAsString())"
@@ -66,6 +68,7 @@ class QCURLQuery {
                 if let delegateObj: QCURLQueryDelegate = self.delegate {
                     delegateObj.didReturnSearchResults(self.searchResult!)
                 }
+                self.hitCount = self.hitCount + 1
                 
             } catch {
                 
