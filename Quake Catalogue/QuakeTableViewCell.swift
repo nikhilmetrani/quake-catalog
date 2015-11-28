@@ -21,4 +21,8 @@ class QuakeTableViewCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    @IBAction func backFromDetail(segue: UIStoryboardSegue) {
+        
+    }
 }

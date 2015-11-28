@@ -20,13 +20,14 @@
                     </tabBar>
                     <connections>
                         <segue destination="UyZ-1A-ecX" kind="relationship" relationship="viewControllers" id="3kR-Fp-aKk"/>
+                        <segue destination="4jl-rJ-pJg" kind="relationship" relationship="viewControllers" id="HzE-mO-edD"/>
                         <segue destination="lGH-Yr-pAo" kind="relationship" relationship="viewControllers" id="A9S-oI-C8w"/>
                         <segue destination="cfe-wc-gLN" kind="relationship" relationship="viewControllers" id="MFN-Gi-Vf0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-169" y="1143"/>
+            <point key="canvasLocation" x="-255" y="1143"/>
         </scene>
         <!--Analytics-->
         <scene sceneID="jeQ-er-5jM">
@@ -47,7 +48,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ljn-sD-3c8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="741" y="1057"/>
+            <point key="canvasLocation" x="783" y="1661"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="fko-yx-sXR">
+            <objects>
+                <viewController id="4jl-rJ-pJg" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k3d-LN-PGn"/>
+                        <viewControllerLayoutGuide type="bottom" id="BgG-Y3-7gm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ChD-I3-UOe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map" id="5dC-r8-6bS"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V3u-Yb-uy1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="783" y="938"/>
         </scene>
         <!--News-->
         <scene sceneID="6Wa-jO-Z3Y">
@@ -83,7 +105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pV1-lr-zy9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="741" y="1729"/>
+            <point key="canvasLocation" x="783" y="2389"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="KVk-Yo-hCW">
@@ -97,14 +119,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="KYi-HM-P8M">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="KYi-HM-P8M">
                                 <rect key="frame" x="0.0" y="109" width="600" height="39"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="W34-sL-6Bf"/>
+                                </constraints>
                                 <date key="date" timeIntervalSinceReferenceDate="470244937.19940799">
                                     <!--2015-11-26 15:35:37 +0000-->
                                 </date>
                             </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Search filter option" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqI-5W-aEB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search filter option" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqI-5W-aEB">
                                 <rect key="frame" x="0.0" y="59" width="600" height="42"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -124,16 +149,16 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KYi-HM-P8M" firstAttribute="leading" secondItem="aqI-5W-aEB" secondAttribute="leading" id="Esa-iv-IbU"/>
                             <constraint firstItem="KYi-HM-P8M" firstAttribute="top" secondItem="i60-zz-ZP2" secondAttribute="bottom" constant="46" id="Jxh-Em-N0O"/>
-                            <constraint firstItem="KYi-HM-P8M" firstAttribute="top" secondItem="aqI-5W-aEB" secondAttribute="bottom" constant="8" symbolic="YES" id="MSO-9Z-iO4"/>
-                            <constraint firstItem="CH0-Ff-bQw" firstAttribute="top" secondItem="KYi-HM-P8M" secondAttribute="bottom" constant="452" id="Ns2-dS-UPa"/>
-                            <constraint firstItem="aqI-5W-aEB" firstAttribute="trailing" secondItem="KYi-HM-P8M" secondAttribute="trailing" id="Skz-hR-ie9"/>
-                            <constraint firstAttribute="trailing" secondItem="aqI-5W-aEB" secondAttribute="trailing" id="YIa-0f-RFj"/>
+                            <constraint firstAttribute="trailing" secondItem="KYi-HM-P8M" secondAttribute="trailing" id="OTZ-5Q-oOY"/>
+                            <constraint firstItem="KYi-HM-P8M" firstAttribute="top" secondItem="aqI-5W-aEB" secondAttribute="bottom" constant="8" symbolic="YES" id="Qew-bI-sA1"/>
+                            <constraint firstItem="KYi-HM-P8M" firstAttribute="leading" secondItem="aqI-5W-aEB" secondAttribute="leading" id="YSo-Ho-qdf"/>
                             <constraint firstItem="i60-zz-ZP2" firstAttribute="top" secondItem="KwF-D8-dLp" secondAttribute="bottom" constant="13" id="YfZ-GL-OJH"/>
+                            <constraint firstItem="aqI-5W-aEB" firstAttribute="leading" secondItem="SBf-WX-1vf" secondAttribute="leading" id="jwx-nq-29n"/>
                             <constraint firstItem="i60-zz-ZP2" firstAttribute="trailing" secondItem="SBf-WX-1vf" secondAttribute="trailingMargin" id="nZj-kB-zNl"/>
-                            <constraint firstItem="aqI-5W-aEB" firstAttribute="top" secondItem="KwF-D8-dLp" secondAttribute="bottom" constant="39" id="ohQ-h7-FQe"/>
-                            <constraint firstItem="aqI-5W-aEB" firstAttribute="leading" secondItem="SBf-WX-1vf" secondAttribute="leading" id="s0N-wR-il5"/>
+                            <constraint firstItem="aqI-5W-aEB" firstAttribute="top" secondItem="KwF-D8-dLp" secondAttribute="bottom" constant="59" id="vpq-L6-mZL"/>
+                            <constraint firstItem="CH0-Ff-bQw" firstAttribute="top" secondItem="KYi-HM-P8M" secondAttribute="bottom" constant="452" id="xsb-1N-lqX"/>
+                            <constraint firstItem="aqI-5W-aEB" firstAttribute="trailing" secondItem="KYi-HM-P8M" secondAttribute="trailing" id="yWX-8c-lIt"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -144,12 +169,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nTE-cD-1hd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2298" y="-61"/>
+            <point key="canvasLocation" x="3844" y="-174"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="Vtx-eJ-50B">
+            <objects>
+                <splitViewController id="29o-NU-97G" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="LFe-PG-GLS"/>
+                    <connections>
+                        <segue destination="Yix-Ma-HJt" kind="relationship" relationship="masterViewController" id="WCs-Ch-C72"/>
+                        <segue destination="s0d-6m-kR3" kind="relationship" relationship="detailViewController" id="Bqo-hp-sVT"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EuU-v3-uU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1513" y="226"/>
         </scene>
         <!--Catalogue-->
         <scene sceneID="jqy-eS-aRC">
             <objects>
-                <navigationController id="UyZ-1A-ecX" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="UyZ-1A-ecX" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Catalogue" id="wbg-xV-4wN"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XAq-I8-wU2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -162,7 +201,7 @@
                         <animations/>
                     </toolbar>
                     <connections>
-                        <segue destination="ETG-Gz-QO2" kind="relationship" relationship="rootViewController" id="Cze-o0-H0q"/>
+                        <segue destination="29o-NU-97G" kind="relationship" relationship="rootViewController" id="ukN-hQ-ARS"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HED-o8-4Jt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -183,13 +222,28 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Quake" id="Ehs-ph-4cg">
-                        <barButtonItem key="backBarButtonItem" title="&lt; Back" id="DPk-0A-fu7"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Quake" id="Ehs-ph-4cg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ji-Lh-SDt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3132" y="772"/>
+            <point key="canvasLocation" x="3102" y="608"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="J4c-vy-TmA">
+            <objects>
+                <navigationController id="Yix-Ma-HJt" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KT8-Q3-Xee">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ETG-Gz-QO2" kind="relationship" relationship="rootViewController" id="wpa-mM-krD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u8s-MG-vtm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2329" y="-174"/>
         </scene>
         <!--QuakeCatalogue-->
         <scene sceneID="MEy-Kx-vC3">
@@ -265,14 +319,11 @@
                             <outlet property="delegate" destination="ETG-Gz-QO2" id="Obk-7u-zDu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Quake Catalogue" id="bFt-Nw-37l"/>
-                    <connections>
-                        <segue destination="q71-pu-oH2" kind="presentation" id="LKH-Ba-QMa"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Quakes" id="bFt-Nw-37l"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6HS-ca-sRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1530" y="226"/>
+            <point key="canvasLocation" x="3102" y="-174"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="85z-KY-4nw">
@@ -295,7 +346,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZU-Ra-87A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2298" y="772"/>
+            <point key="canvasLocation" x="2329" y="608"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="8Zt-OJ-ER5"/>
+    </inferredMetricsTieBreakers>
 </document>
