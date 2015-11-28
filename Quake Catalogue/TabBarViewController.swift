@@ -15,7 +15,7 @@ class TabBarViewController: UITabBarController, UISplitViewControllerDelegate {
         super.viewDidLoad()
         
         for controller in self.viewControllers! {
-            if controller.tabBarItem.title == "Catalogue" {
+            if controller.tabBarItem.title == "QuakeLog" {
                 let splitViewController = (controller as! UINavigationController).viewControllers[0] as! UISplitViewController
                 let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
                 navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()

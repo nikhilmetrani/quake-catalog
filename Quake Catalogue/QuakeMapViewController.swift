@@ -22,8 +22,8 @@ class QuakeMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     
     let theSpan = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
     
-    
-    var locations:[MKAnnotation]!
+    var currentUserLocation:CLLocation?
+    var locations:[MKPointAnnotation]!
 
     
     override func viewDidLoad() {
@@ -35,8 +35,9 @@ class QuakeMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.startMonitoringSignificantLocationChanges()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        //locationManager.startMonitoringSignificantLocationChanges()
         
         
         mapView.showsUserLocation = true
@@ -46,9 +47,21 @@ class QuakeMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
         //Check if the map is with old search, take a latest data
-        
-        refreshMap()
+        print("viewDidAppear")
+        locationManager.startUpdatingLocation()
+       // refreshMap()
+       // locationManager.startMonitoringSignificantLocationChanges()
+
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+    
+        super.viewDidDisappear(animated)
+       // locationManager.stopMonitoringSignificantLocationChanges()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,15 +70,16 @@ class QuakeMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     func refreshMap(){
-        //mapView.removeAnnotations(mapView.annotations)
-        locations = [MKAnnotation]()
+        
         if hitCount != QCURLQuery.instance.hitCount{
+            
+            mapView.removeAnnotations(mapView.annotations)
+            locations = [MKPointAnnotation]()
             
             self.hitCount = QCURLQuery.instance.hitCount
             
             self.features = QCURLQuery.instance.searchResult!.features
-            
-            mapView.removeAnnotations(mapView.annotations)
+
             
             if self.features.count > 0 {
                 
@@ -77,8 +91,24 @@ class QuakeMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
                     
                     mapView.setRegion(theRegion, animated: true)
                     
-                    addMapAnnotation(venueLocation, title:quake.title!, subTitle:"", feature: quake)
                     
+                    var distanceStr:String!
+                    if(currentUserLocation != nil)
+                    {
+                        let loc = CLLocation(latitude: venueLocation.latitude, longitude: venueLocation.longitude)
+                        
+                        let distance = currentUserLocation!.distanceFromLocation(loc)
+                        
+                        let distanceValue = Float(distance.description)!/1000
+                        distanceStr = "\(distanceValue) KM away from Current Location"
+                        
+                    }else
+                    {
+                        
+                        distanceStr = ""
+                    }
+                    
+                    addMapAnnotation(venueLocation, title:quake.title!, subTitle:distanceStr, feature: quake)
                 }
                 mapView.addAnnotations(locations)
             }
@@ -88,11 +118,8 @@ class QuakeMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     func addMapAnnotation(venueLocation:CLLocationCoordinate2D, title:String, subTitle:String, feature:QCQuakeFeature){
-        let venuePoint = QCMapAnnotation()
-        venuePoint.coordinate = venueLocation
-        venuePoint.title = title
-        venuePoint.subtitle = subTitle
-        venuePoint.feature = feature;
+        let venuePoint = QCMapAnnotation(title: title, subtitle: subTitle, loc: venueLocation, feature: feature)
+        //print(subTitle)
         locations.append(venuePoint)
     }
     
@@ -111,9 +138,9 @@ class QuakeMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
                 var pinView:SVPulsingAnnotationView? =   mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? SVPulsingAnnotationView
                 if pinView == nil {
                     pinView = SVPulsingAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-                    pinView!.annotationColor = self.getPinColor(myAnno.feature)//UIColor.redColor()
+                    pinView!.annotationColor = self.getPinColor(myAnno.feature)
                     pinView!.canShowCallout = true
-                    
+                    //pinView!.rightCalloutAccessoryView = UIButton.add
                 }
                 else {
                     pinView!.annotation = annotation
@@ -130,6 +157,8 @@ class QuakeMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         if(feature.mag >= 6){
             return UIColor.redColor()
         }else if(feature.mag >= 5){
+            return UIColor.orangeColor()
+        }else if(feature.mag >= 4){
             return UIColor.purpleColor()
         }
         else{
@@ -137,6 +166,19 @@ class QuakeMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         }
     }
 
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        currentUserLocation = locations.last
+        refreshMap()
+        
+        //print("lat: \(locations.last?.coordinate.latitude)");
+        if(currentUserLocation != nil)
+        {
+            locationManager.stopUpdatingLocation()
+            //locationManager.startMonitoringSignificantLocationChanges()
+        }
+    }
+   // func location
     /*
     // MARK: - Navigation
 
