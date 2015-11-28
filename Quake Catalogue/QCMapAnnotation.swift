@@ -13,5 +13,14 @@ import MapKit
 class QCMapAnnotation : MKPointAnnotation
 {
     var feature:QCQuakeFeature!    
+    var subTitle:String!
     
+    init(title:String, subtitle: String, loc:CLLocationCoordinate2D, feature:QCQuakeFeature)
+    {
+        super.init()
+        super.title = title;
+        super.subtitle = subtitle
+        super.coordinate = loc
+        self.feature = feature
+    }
 }
