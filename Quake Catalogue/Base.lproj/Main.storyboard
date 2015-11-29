@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -516,13 +515,16 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vQy-dB-QnR" id="C0E-Sp-HOn">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="67.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TiX-be-Y3t">
                                             <rect key="frame" x="82" y="10" width="510" height="27"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="27" id="Km2-lz-efe"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.016917694360017776" green="0.49235481023788452" blue="0.98692768812179565" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -530,9 +532,9 @@
                                             <rect key="frame" x="8" y="1" width="66" height="66"/>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="66" id="FJK-em-L2p"/>
+                                                <constraint firstAttribute="width" constant="66" id="aG3-nr-fFd"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="26"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                             <color key="textColor" red="1" green="0.0" blue="0.10159769240993022" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -550,16 +552,15 @@
                                     <animations/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstItem="TiX-be-Y3t" firstAttribute="trailing" secondItem="C0E-Sp-HOn" secondAttribute="trailingMargin" id="3VX-OS-8g7"/>
-                                        <constraint firstItem="TiX-be-Y3t" firstAttribute="top" secondItem="C0E-Sp-HOn" secondAttribute="topMargin" constant="2" id="A0d-NE-oFi"/>
-                                        <constraint firstItem="Ymf-RX-UYL" firstAttribute="leading" secondItem="TiX-be-Y3t" secondAttribute="leading" id="CNg-fK-X7m"/>
-                                        <constraint firstItem="skd-rq-ZEM" firstAttribute="leading" secondItem="C0E-Sp-HOn" secondAttribute="leadingMargin" id="Eya-lH-TE4"/>
-                                        <constraint firstItem="skd-rq-ZEM" firstAttribute="centerY" secondItem="C0E-Sp-HOn" secondAttribute="centerY" id="G4g-8m-6BA"/>
-                                        <constraint firstItem="Ymf-RX-UYL" firstAttribute="top" secondItem="TiX-be-Y3t" secondAttribute="bottom" constant="6" id="Psc-qJ-QrG"/>
-                                        <constraint firstItem="Ymf-RX-UYL" firstAttribute="trailing" secondItem="TiX-be-Y3t" secondAttribute="trailing" id="Xao-Xc-OPM"/>
-                                        <constraint firstItem="skd-rq-ZEM" firstAttribute="baseline" secondItem="Ymf-RX-UYL" secondAttribute="baseline" id="bWX-dt-GmF"/>
-                                        <constraint firstItem="TiX-be-Y3t" firstAttribute="leading" secondItem="skd-rq-ZEM" secondAttribute="trailing" constant="8" symbolic="YES" id="dEd-az-jsG"/>
-                                        <constraint firstItem="skd-rq-ZEM" firstAttribute="firstBaseline" secondItem="TiX-be-Y3t" secondAttribute="firstBaseline" id="nul-JH-aDx"/>
+                                        <constraint firstItem="TiX-be-Y3t" firstAttribute="top" secondItem="C0E-Sp-HOn" secondAttribute="topMargin" constant="2" id="6Xf-jp-LbX"/>
+                                        <constraint firstItem="skd-rq-ZEM" firstAttribute="top" secondItem="C0E-Sp-HOn" secondAttribute="topMargin" constant="-7" id="8ej-PJ-s15"/>
+                                        <constraint firstItem="skd-rq-ZEM" firstAttribute="centerY" secondItem="C0E-Sp-HOn" secondAttribute="centerY" id="GJ4-mS-LNc"/>
+                                        <constraint firstItem="TiX-be-Y3t" firstAttribute="leading" secondItem="skd-rq-ZEM" secondAttribute="trailing" constant="8" symbolic="YES" id="byt-ga-ckr"/>
+                                        <constraint firstItem="Ymf-RX-UYL" firstAttribute="top" secondItem="TiX-be-Y3t" secondAttribute="bottom" constant="6" id="bzf-QJ-cgN"/>
+                                        <constraint firstItem="TiX-be-Y3t" firstAttribute="leading" secondItem="Ymf-RX-UYL" secondAttribute="leading" id="d1X-Pj-7rh"/>
+                                        <constraint firstItem="TiX-be-Y3t" firstAttribute="trailing" secondItem="C0E-Sp-HOn" secondAttribute="trailingMargin" id="fjq-nw-G29"/>
+                                        <constraint firstItem="skd-rq-ZEM" firstAttribute="leading" secondItem="C0E-Sp-HOn" secondAttribute="leadingMargin" id="ino-Wk-0k0"/>
+                                        <constraint firstItem="TiX-be-Y3t" firstAttribute="trailing" secondItem="Ymf-RX-UYL" secondAttribute="trailing" id="j5D-rH-xPC"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
