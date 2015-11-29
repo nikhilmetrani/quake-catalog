@@ -95,10 +95,14 @@ class QCURLQuery {
                 let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                 print("AsSynchronous\(jsonResult)")
                 self.searchResult = QCQuakeQueryResult(json: jsonResult)
-                if let delegateObj: QCURLQueryDelegate = self.delegate {
-                    delegateObj.didReturnSearchResults(self.searchResult!)
-                }
                 self.hitCount = self.hitCount + 1
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    if let delegateObj: QCURLQueryDelegate = self.delegate {
+                        delegateObj.didReturnSearchResults(self.searchResult!)
+                    }
+                })
+                
                 
             } catch {
                 

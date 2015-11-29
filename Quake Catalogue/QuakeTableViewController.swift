@@ -103,8 +103,8 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
     func initializeSearchCriteria() {
         let dateTimeComponents: QCDateTimeConponents = QCDateTimeConponents()
         
-        quakeSearchCriteria.minmagnitude = 4
-        quakeSearchCriteria.maxmagnitude = 4
+        quakeSearchCriteria.minmagnitude = 2
+        quakeSearchCriteria.maxmagnitude = 9
         quakeSearchCriteria.year = dateTimeComponents.year
         quakeSearchCriteria.month = dateTimeComponents.month
         quakeSearchCriteria.day = dateTimeComponents.day
