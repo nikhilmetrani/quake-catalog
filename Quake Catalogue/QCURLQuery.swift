@@ -88,6 +88,10 @@ class QCURLQuery {
         
         let quakeSearchResultHandler: (NSData?, NSURLResponse?, NSError?) -> () = { (data: NSData?,response: NSURLResponse?,  error: NSError?) -> Void in
             do {
+                if(error != nil) {
+                    self.searchResult = nil
+                    return
+                }
                 let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                 print("AsSynchronous\(jsonResult)")
                 self.searchResult = QCQuakeQueryResult(json: jsonResult)

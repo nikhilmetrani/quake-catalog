@@ -20,7 +20,6 @@ class AnalyticsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //onIndexSelected(0)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -102,9 +101,12 @@ class AnalyticsViewController: UIViewController {
             chartItems.append(item)
         }
         self.pieChart.updateChartData(chartItems)
+        
         let legend = self.pieChart.getLegendWithMaxWidth(320.0)
-        legend.frame = CGRectMake(130, 350, legend.frame.size.width, legend.frame.size.height)
-        self.containerView.addSubview(legend)
+        if(legend != nil) {
+            legend.frame = CGRectMake(130, 350, legend.frame.size.width, legend.frame.size.height)
+            self.containerView.addSubview(legend)
+        }
     }
     
     private func refreshLineChart() {
@@ -113,7 +115,7 @@ class AnalyticsViewController: UIViewController {
         dateFormatter.dateFormat = "dd/MM/yyyy hh:mm"
         let chartData = PNLineChartData()
         chartData.dataTitle = "Magnitude"
-        chartData.color = UIColor.blueColor()
+        chartData.color = PNRed
         chartData.alpha = 0.3
         let count = (magnitudes?.count)!
         chartData.itemCount = UInt(count)        
@@ -125,7 +127,9 @@ class AnalyticsViewController: UIViewController {
         self.lineChart.chartData = [chartData]
         self.lineChart.strokeChart()
         let legend = self.lineChart.getLegendWithMaxWidth(320.0)
-        legend.frame = CGRectMake(130, 350, legend.frame.size.width, legend.frame.size.height)
-        self.containerView.addSubview(legend)
+        if(legend != nil) {
+            legend.frame = CGRectMake(130, 350, legend.frame.size.width, legend.frame.size.height)
+            self.containerView.addSubview(legend)
+        }
     }
 }

@@ -39,6 +39,6 @@ public let PNTwitterColor = UIColor(red:0.0 / 255.0 ,green:171.0 / 255.0 ,blue:2
 public let PNWeiboColor = UIColor(red:250.0 / 255.0 ,green:0.0 / 255.0 ,blue:33.0 / 255.0 ,alpha:1.0)
 public let PNiOSGreenColor = UIColor(red:98.0 / 255.0 ,green:247.0 / 255.0 ,blue:77.0 / 255.0 ,alpha:1.0)
 
-public let PieCharColors = [PNGreen, PNLightBlue, PNRed, PNHealYellow, PNPinkDark, PNYellow,
+public let PieCharColors = [PNPinkDark, PNYellow,PNLightBlue, PNRed, PNGreen, PNStarYellow,
     UIColor.orangeColor(), UIColor.magentaColor(), UIColor.cyanColor()]
 
