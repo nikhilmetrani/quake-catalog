@@ -114,6 +114,7 @@ class AuthViewController: UIViewController, SFSafariViewControllerDelegate, UITa
        
         cell.textLabel?.text = tweets[indexPath.row]["text"].string
         cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.textColor = UIColor.darkGrayColor()
         // cell.textLabel?.lineBreakMode = .ByWordWrapping
         return cell
     }
