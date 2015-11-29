@@ -17,12 +17,16 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    var refreshControl1 = UIRefreshControl();
+    
     var currentSearchResult: QCQuakeQueryResult?
     let quakeQueryURLAsString: String = "http://earthquake.usgs.gov/fdsnws/event/1/query"
     var urlQuery: QCURLQuery = QCURLQuery.instance
     var quakeCoordinateAndSpan: (quakeCoordinates: CLLocationCoordinate2D, spanArea: MKCoordinateSpan)?
     
     let dateTimeComponents: QCDateTimeConponents = QCDateTimeConponents()
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +43,10 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? QuakeDetailViewController
         }
         
+        self.refreshControl1.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl1.addTarget(self, action: Selector("getLatest"), forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refreshControl1)
+        
         urlQuery.URL = quakeQueryURLAsString
         urlQuery.delegate = self
         initializeSearchCriteria()
@@ -49,6 +57,10 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
         
         self.urlQuery.execute()
         tableView.reloadData()
+    }
+    
+    func getLatest() {
+        self.urlQuery.execute()
     }
     
     func refineSearchCriteria(sender: AnyObject) {
@@ -78,6 +90,10 @@ class QuakeTableViewController: UITableViewController, QCURLQueryDelegate {
     
     func didReturnSearchResults(quakeSearchResult: QCQuakeQueryResult) {
         //activityIndicator.stopAnimating()
+        if self.refreshControl1.refreshing
+        {
+            self.refreshControl1.endRefreshing()
+        }
         currentSearchResult = quakeSearchResult
         tableView.reloadData()
     }
